@@ -89,7 +89,9 @@ p_data <-
 ```
 
 ## 0. Useful Links
-- Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
+- Chartmaker directory: http://chartmaker.visualisingdata.com/
 - Colours in R: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+- GGplot cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
+- Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 
 **to be continued...**
