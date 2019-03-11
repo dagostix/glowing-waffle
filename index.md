@@ -2,10 +2,10 @@
 
 **Index**
 1. [Useful Packages](#1-Useful-Packages)
-2. Importing & Reading Data
-3. Data Analysis
-4. Visualizing Data
-0. Useful links
+2. [Importing & Reading Data](#Importing--Reading-Data)
+3. [Data Analysis](#Data-Analysis)
+4. [Visualizing Data](#Visualizing-Data)
+0. [Useful links](#Useful-links)
 
 ## 1. Useful Packages
 
