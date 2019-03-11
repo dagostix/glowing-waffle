@@ -91,6 +91,7 @@ p_data <-
 ## 0. Useful Links
 - Chartmaker directory: http://chartmaker.visualisingdata.com/
 - Colours in R: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+- Designing visualization: https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf
 - GGplot cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 - Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 
