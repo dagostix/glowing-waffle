@@ -1,7 +1,7 @@
 # The R code library
 
 **Index**
-1. [Useful Packages](#1. Useful Packages)
+1. [Useful Packages](#1-Useful-Packages)
 2. Importing & Reading Data
 3. Data Analysis
 4. Visualizing Data
