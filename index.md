@@ -8,9 +8,9 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Updates
-**05.22** - More details added to chapter 2, 3 and 4.  
+**05.22** - More details added to chapter 3 and 4.  
 **05.11** - Useful links added and chapter 3 and 4 updated.  
-**05.03** - creation of the code library, with chapter 1, 2 and 3.   
+**05.03** - creation of the code library with chapter 1, 2 and 3.   
 
 ## 1. Useful Packages
 
@@ -80,17 +80,62 @@ summary(results_anova) # summary table
 
 
 ## 4. Visualizing Data
+There are many different types of plots, here are a few:
+- **Beeswarm**: (+) Shows all data points for clear density. (-) Overwhelming for large datasets. Harder to read.
+```
+import::from(ggbeeswarm, geom_beeswarm)
+ggplot(data, aes(x = var1, y = dv)) +
+  geom_beeswarm(cex = 2) +  # scaling for point spacing
+  facet_grid(. ~ var2) +  # creating grid for different var2
+  theme(legend.position = "none")
+```
+
+- **Boxplot**: (+) Allows for easy visualisation of overall trends and quartiles. Treats large data well. (-) Does not show precise values.
+```
+ggplot(data, aes(x=var1, y=dv, fill=var2)) +
+  geom_boxplot() +
+  theme(legend.position = "none")
+```
+
+- **Density plot**: (+) Determine if data is normally distributed. Easy to layer onto Histogram. (-) Does not show precise values.
+```
+ggplot(data, aes(x=dv, y=..density.., alpha = 0.4, fill = var1)) +  # choosing fill according to var1
+  geom_density() +
+  facet_grid(var2 ~ .)+
+  theme(legend.position = "none")
+```
+
+- **Histogram**: (+) Simple and easy to read. (-) Not very interesting. Easily misread when error bars are added. 
+```
+ggplot(data, aes(x=dv, y=..count..)) +
+  geom_histogram(binwidth = 0.2) +  # scaling of bars
+  facet_grid(var2 ~ var1)
+```
+
+- **Stacked dot**: (+) Great for small datasets. Easy to read/count dots. (-) Does not show a lot of information.
+```
+ggplot(data, aes(x=overshoots, y=..count..)) +
+  geom_dotplot(dotsize = 0.4) +  # sclaing of dot
+  facet_grid(vision ~ device)+
+  theme(legend.position = "none")
+```
+
+- **Violin**: Similar to box plots, but (+) shows probability density.
+```
+ggplot(data, aes(x=device, y=time, fill = vision)) +
+  geom_violin() +
+  facet_grid(. ~ data$vision)+
+  theme(legend.position = "none")
+```
+
 The position dodge below ensures no overlaps on the data points in the plot, which will be included in the "position" argument. 
 ```
 pd <- position_dodge(0.3) 
-p_data <- 
-  data %>% 
-  ggplot(aes(x = var2, y = var1, color = var2, group = var2)) +
-    stat_summary(fun.y = mean, geom = "point", shape = 18, size = 3, position = pd) + 
-    stat_summary(fun.y = mean, geom = "line", position = pd) + 
-    stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0, position = pd) + 
-    ylab("Mean(time) and 95% CI (from individual group)") +
-    expand_limits(y = 0)
+ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
+ stat_summary(fun.y = mean, geom = "point", shape = 18, size = 3, position = pd) + 
+ stat_summary(fun.y = mean, geom = "line", position = pd) + 
+ stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0, position = pd) + 
+ expand_limits(y = 0)
 ```
 
 ## 99. Useful Links
