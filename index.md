@@ -8,9 +8,9 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Updates
-05.22
-**05.11** - 
-__05.03__ - creation of the code library
+**05.22** - More details added to chapter 2, 3 and 4.  
+**05.11** - Useful links added and chapter 3 and 4 updated.  
+**05.03** - creation of the code library, with chapter 1, 2 and 3.   
 
 ## 1. Useful Packages
 
@@ -61,12 +61,12 @@ data <-
 ``` 
 
 ## 3. Data Analysis 
-Basic regression with a linear model and two variables. 
+Basic regression with a linear model and two variables. The * sign does both the interaction (:) and addition (+).
 ```
 reg <- lm(dv ~ iv1 * iv2, data = data)
 ```
 
-Then one-way ANOVA. 
+Then one-way ANOVA – used to compare means of multiple samples. They can be the same (null hypothesis) or different (alternative hypothesis). Assumptions: (1) observations are random, (2) data is normally distributed and (3) the populations have a normal variance (check with Levene's test)
 ```
 anova_reg <- anova(reg)
 ```
