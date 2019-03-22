@@ -5,7 +5,10 @@
 2. [Importing & Reading Data](#2-Importing--Reading-Data)
 3. [Data Analysis](#3-Data-Analysis)
 4. [Visualizing Data](#4-Visualizing-Data)
-0. [Useful links](#0-Useful-links)
+99. [Useful links](#99-Useful-links)
+
+Updates
+
 
 ## 1. Useful Packages
 
@@ -88,7 +91,7 @@ p_data <-
     expand_limits(y = 0)
 ```
 
-## 0. Useful Links
+## 99. Useful Links
 - Chartmaker directory: http://chartmaker.visualisingdata.com/
 - Colours in R: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 - Designing visualization: https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf
