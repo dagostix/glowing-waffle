@@ -7,8 +7,10 @@
 4. [Visualizing Data](#4-Visualizing-Data)
 99. [Useful links](#99-Useful-links)
 
-Updates
-
+## 0. Updates
+05.22
+**05.11** - 
+__05.03__ - creation of the code library
 
 ## 1. Useful Packages
 
