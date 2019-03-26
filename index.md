@@ -8,8 +8,9 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Updates
-**05.22** - More details added to chapter 3 and 4.  
-**05.11** - Useful links added and chapter 3 and 4 updated.  
+**26.03** - Useful links updated
+**22.03** - More details added to chapter 3 and 4.  
+**11.03** - Useful links added and chapter 3 and 4 updated.  
 **05.03** - creation of the code library with chapter 1, 2 and 3.   
 
 ## 1. Useful Packages
@@ -144,5 +145,6 @@ ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
 - Designing visualization: https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf
 - GGplot cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 - Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
+- Regular expressions cheatsheet: https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf
 
 **to be continued...**
