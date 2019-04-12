@@ -8,17 +8,21 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Blog Updates
-**12.04** - So, I'm back today with adding some more useful code and to add a bit more oompf to my previous entries. We didn't have class this week as it was a holiday, so I surfed a bit until I found some interesting code or functions to add here. Some I have also taken from other classes, as I thought they were quite useful and would find their place here. 
+**12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* to my previous entries. We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using print again, hail to cat!  
+**–>sharing code from past lectures and seminars**   
+   
 **26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too! Then, during another class this time, I was trying to figure out how to write mathematical expressions in R Markdown, which uses LateX. I kept searching for expressions every couple of minutes, until I thought I'd look for a cheatsheet. Instead, I found a really useful page with all of the code for writing the mathematical expressions. I actually downloaded the page to keep as a reference even when I don't have internet. Now, for those you have not used these before, when writing mathematical expressions in markdown, you need to write it between single dollar signs for $*in line expressions*$ and between double dollar signs $$*for emphasised expressions*$$ that will take a new lign with centre alignment.   
 **–>Useful links updated.**   
-**22.03** -  
+   
+**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. 
 **–>More details added to sections 3 and 4.**  
-**11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type.   
+   
+**11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. Here is the full description of how it works: https://ggplot2.tidyverse.org/reference/facet_grid.html
 **–>Useful links added and sections 3 and 4 updated.**   
      
 **05.03** - So today I created the R code library in the context of a class at UZH, Quantitative Methods in Human-Computer Interactions. The aim is to have a nice little database/library of the useful code that one will often use in quantitative methods. So As you can see below, I decided to list the packages that the teacher shared with us. I chose to add their descriptions, and then group them into broad categories, as sometimes it can be difficult to remember all the different packages and their use. Also, little tip: if you press cmd + F1 (on macs) in Rstudio while the cursor is on a function, the help will appear, that's the equivalent of typing ?*functionname* in the console. The 'others' category is for the pckages that are quite broad and didn't fully fit in one category. Then came sections 3 and 4, where I just copied the code so far. I will annotate them at a later time. Finally, I wanted to mention that it's my first time using this sort of tool, and I think it's very practical! I will definitely consider github for future projects :)  
 **–>Creation of the code library with sections 1, 2, 3 and 4.**    
-
+   
 ## 1. Useful Packages
 
 #### Analysis & Regressions
