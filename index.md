@@ -7,11 +7,15 @@
 4. [Visualizing Data](#4-Visualizing-Data)
 99. [Useful links](#99-Useful-links)
 
-## 0. Updates
+## 0. Blog Updates
+**12.04** - So, I'm back today with adding some more useful code and to add a bit more oompf to my previous entries. We didn't have class this week as it was a holiday, so I surfed a bit until I found some interesting code or functions to add here. Some I have also taken from other classes, as I thought they were quite useful and would find their place here. 
 **26.03** - Useful links updated
-**22.03** - More details added to chapter 3 and 4.  
-**11.03** - Useful links added and chapter 3 and 4 updated.  
-**05.03** - creation of the code library with chapter 1, 2 and 3.   
+**22.03** - More details added to sections 3 and 4.  
+**11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. 
+      –>Useful links added and sections 3 and 4 updated.  
+     
+**05.03** - So today I created the R code library in the context of a class at UZH, Quantitative Methods in Human-Computer Interactions. The aim is to have a nice little database/library of the useful code that one will often use in quantitative methods. So As you can see below, I decided to list the packages that the teacher shared with us. I chose to add their descriptions, and then group them into broad categories, as sometimes it can be difficult to remember all the different packages and their use. Also, little tip: if you press cmd + F1 (on macs) in Rstudio while the cursor is on a function, the help will appear, that's the equivalent of typing ?*functionname* in the console. The 'others' category is for the pckages that are quite broad and didn't fully fit in one category. Then came sections 2 and 3, where I just copied the code so far. I will annotate them at a later time. Finally, I wanted to mention that it's my first time using this sort of tool, and I think it's very practical! I will definitely consider github for future projects :)
+      –>Creation of the code library with sections 1, 2 and 3.   
 
 ## 1. Useful Packages
 
