@@ -8,13 +8,15 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Blog Updates
-**12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I miunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using print again, all hail to cat!  
-**–>sharing code from past lectures and seminars**   
+**Next update**: I will add more functions to section 3: normal, orderded and multinomial logit and probit.   
    
-**26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too!  
+**12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I miunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using `print` again, all hail to `cat`!   
+**–>sharing code from past lectures and seminars on stargazer and maps**   
+   
+**26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too!   
 **–>Useful links updated.**   
    
-**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. As we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. This type of analysis goes hand in hand with the link "Chartmaker directory" that explains which chart to make for which sort of data. It's a great help when you're unsure about how to effectively visualise and share data. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. Here is the full description of how it works: https://ggplot2.tidyverse.org/reference/facet_grid.html You'll also find in the usefull links a cheatsheet for GGplot, which always helps to refresh one's memory. The functions there are mainly the basic ones, so once it gets more complicated, sometimes an interent search will prove more fruitful. 
+**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. As we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. This type of analysis goes hand in hand with the link "Chartmaker directory" that explains which chart to make for which sort of data. It's a great help when you're unsure about how to effectively visualise and share data. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. Here is the full description of how it works: https://ggplot2.tidyverse.org/reference/facet_grid.html You'll also find in the usefull links a cheatsheet for GGplot, which always helps to refresh one's memory. The functions there are mainly the basic ones, so once it gets more complicated, sometimes an interent search will prove more fruitful.   
 **–>More details added to sections 3 and 4.**  
    
 **11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, and I added a plot that we worked on during class today. The plot looks much nicer than the code written here, it clearly does not do it justice!! However, the important part of it is essentially the position dodge. In this case we have a variable with three different possible values on the x-axis. In order to avoid them overlapping if the y-axis values are too close, a position dodge allows the three dots to be side by side (slightly below the mark, on the mark and slightly above the mark). This makes the plots drastically more readable and easy to understand. I will definitely be using this for my next data visualisations!   
@@ -71,6 +73,7 @@ data <-
     var1 = as.factor(var1),
     var2 = as.factor(var2))
 ``` 
+Many different function with read.*type of file*() can be used. However, what I find most useful, when no mutation is necessary, is to simply go to the folder in the 'file' section in Rstudio, right click and import the data. 
 
 ## 3. Data Analysis 
 Basic regression with a linear model and two variables. The * sign does both the interaction (:) and addition (+).
@@ -90,6 +93,7 @@ print(results_anova) # APA text output
 summary(results_anova) # summary table
 ``` 
 
+Next time: will add normal, orderded and multinomial logit and probit
 
 ## 4. Visualizing Data
 There are many different types of plots, here are a few:
@@ -167,8 +171,9 @@ stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to s
           covariate.labels = c("(Intercept)", "Inflows", "\\textbf{Lijphart's Index}", "\\textbf{Ideal Point}", "Gov. Effectiveness", "Rule of Law", "Democracy", "(log) GDP per capita", "(log) Population", "NATO Country", "War", "TIFA", "FTA"),  # renaming rows
           type = "latex")  # technically unnecessary, as latex is default. it is useful to have it as one can quickly write "text" to see a quick print while setting the changes
 ```
+You will see here above that some variables have been transformed with a natural logarithm. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in this stacks exchange post: https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530 No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
 
-Another beautiful way to show data, if possible, is through a map represenation of the data. A teacher in another class had shared with us this technique of using a map to show our data. 
+Another beautiful way to show data, if possible, is through a **map representation of the data**. A teacher in another class had shared with us this technique of using a map to show our data. 
 ```
 map.world <- map_data("world")
 #map_data('world') %>% group_by(region) %>% summarise() %>% print(n = Inf)
