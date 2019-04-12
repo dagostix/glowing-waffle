@@ -11,16 +11,17 @@
 **12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I miunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using print again, all hail to cat!  
 **–>sharing code from past lectures and seminars**   
    
-**26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too! Then, during another class this time, I was trying to figure out how to write mathematical expressions in R Markdown, which uses LateX. I kept searching for expressions every couple of minutes, until I thought I'd look for a cheatsheet. Instead, I found a really useful page with all of the code for writing the mathematical expressions. I actually downloaded the page to keep as a reference even when I don't have internet. Now, for those you have not used these before, when writing mathematical expressions in markdown, you need to write it between single dollar signs for $*in line expressions*$ and between double dollar signs $$*for emphasised expressions*$$ that will take a new lign with centre alignment.   
+**26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too!  
 **–>Useful links updated.**   
    
-**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. As we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. Here is the full description of how it works: https://ggplot2.tidyverse.org/reference/facet_grid.html
+**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. As we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. This type of analysis goes hand in hand with the link "Chartmaker directory" that explains which chart to make for which sort of data. It's a great help when you're unsure about how to effectively visualise and share data. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. Here is the full description of how it works: https://ggplot2.tidyverse.org/reference/facet_grid.html You'll also find in the usefull links a cheatsheet for GGplot, which always helps to refresh one's memory. The functions there are mainly the basic ones, so once it gets more complicated, sometimes an interent search will prove more fruitful. 
 **–>More details added to sections 3 and 4.**  
    
-**11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, and I added a plot that we worked on during class today. The plot looks much nicer than the code written here, it clearly does not do it justice!! However, the important part of it is essentially the position dodge. In this case we have a variable with three different possible values on the x-axis. In order to avoid them overlapping if the y-axis values are too close, a position dodge allows the three dots to be side by side (slightly below the mark, on the mark and slightly above the mark). This makes the plots drastically more readable and easy to understand. I will definitely be using this for my next data visualisations!
+**11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, and I added a plot that we worked on during class today. The plot looks much nicer than the code written here, it clearly does not do it justice!! However, the important part of it is essentially the position dodge. In this case we have a variable with three different possible values on the x-axis. In order to avoid them overlapping if the y-axis values are too close, a position dodge allows the three dots to be side by side (slightly below the mark, on the mark and slightly above the mark). This makes the plots drastically more readable and easy to understand. I will definitely be using this for my next data visualisations!   
+Then, during another class this time, I was trying to figure out how to write mathematical expressions in R Markdown, which uses LateX. I kept searching for expressions every couple of minutes, until I thought I'd look for a cheatsheet. Instead, I found a really useful page with all of the code for writing the mathematical expressions. I actually downloaded the page to keep as a reference even when I don't have internet. Now, for those you have not used these before, when writing mathematical expressions in markdown, you need to write it between single dollar signs for $*in line expressions*$ and between double dollar signs $$*for emphasised expressions*$$ that will take a new lign with centre alignment. You'll also find a pdf with all the colour names used in R, it's really useful when you already used "red", "blue" and "green" ;)   
 **–>Useful links added and sections 3 and 4 updated.**   
      
-**05.03** - So today I created the R code library in the context of a class at UZH, Quantitative Methods in Human-Computer Interactions. The aim is to have a nice little database/library of the useful code that one will often use in quantitative methods. So As you can see below, I decided to list the packages that the teacher shared with us. I chose to add their descriptions, and then group them into broad categories, as sometimes it can be difficult to remember all the different packages and their use. Also, little tip: if you press cmd + F1 (on macs) in Rstudio while the cursor is on a function, the help will appear, that's the equivalent of typing ?*functionname* in the console. The 'others' category is for the pckages that are quite broad and didn't fully fit in one category. Then came sections 3 and 4, where I just copied the code so far. I will annotate them at a later time. Finally, I wanted to mention that it's my first time using this sort of tool, and I think it's very practical! I will definitely consider github for future projects :)  
+**05.03** - So today I created the R code library in the context of a class at UZH, Quantitative Methods in Human-Computer Interactions. The aim is to have a nice little database/library of the useful code that one will often use in quantitative methods. So As you can see below, I decided to list the packages that the teacher shared with us. I chose to add their descriptions, and then group them into broad categories, as sometimes it can be difficult to remember all the different packages and their use. Also, little tip: if you press F1 in Rstudio while the cursor is on a function, the help will appear, that's the equivalent of typing ?*functionname* in the console. The 'others' category is for the pckages that are quite broad and didn't fully fit in one category. Then came sections 3 and 4, where I just copied the code so far. I will annotate them at a later time. Finally, I wanted to mention that it's my first time using this sort of tool, and I think it's very practical! I will definitely consider github for future projects :)  
 **–>Creation of the code library with sections 1, 2, 3 and 4.**    
    
 ## 1. Useful Packages
@@ -147,6 +148,80 @@ ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
  stat_summary(fun.y = mean, geom = "line", position = pd) + 
  stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0, position = pd) + 
  expand_limits(y = 0)
+```
+
+Now that I have extensively shown different plot types, I think it is useful to show other types of data visualisation, without GGplot. If I ever need to present regression results or dataset statistics, I will always go for `Stargazer`tables. Below you can find a regression table I had used: 
+```
+stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to show side by side
+          header = FALSE,  # removing the header
+          no.space = TRUE,  # removing spaces between lines to allow a larger table to fit in an A4 page
+          intercept.bottom = FALSE,  # placing the intercept on the first line
+          model.names = FALSE,  # removing model names, only to add my own annotation below in colomn.labels
+          multicolumn = FALSE,
+          font.size = "footnotesize",  # many sizes available, this one allowed for more data on one page
+          column.sep.width = "0pt",  # setting the space between columns to 0, to allow more data on the page
+          omit.stat = "all",  # removing all statistics
+          title = "Hypothesis Testing through ordered and multinomial logit in log odds",
+          dep.var.labels = c("Tiers", "Tiers", "Tiers", "Tiers",  "Tier 1", "Tier 2", "Tier 2w"),
+          column.labels = c("o. logit", "o. logit", "o. logit", "m. logit", "m. logit", "m. logit"),  # added below the DV labels
+          covariate.labels = c("(Intercept)", "Inflows", "\\textbf{Lijphart's Index}", "\\textbf{Ideal Point}", "Gov. Effectiveness", "Rule of Law", "Democracy", "(log) GDP per capita", "(log) Population", "NATO Country", "War", "TIFA", "FTA"),  # renaming rows
+          type = "latex")  # technically unnecessary, as latex is default. it is useful to have it as one can quickly write "text" to see a quick print while setting the changes
+```
+
+Another beautiful way to show data, if possible, is through a map represenation of the data. A teacher in another class had shared with us this technique of using a map to show our data. 
+```
+map.world <- map_data("world")
+#map_data('world') %>% group_by(region) %>% summarise() %>% print(n = Inf)
+
+# Make sure the variable is a factor using the following:
+data$var <- as.factor(data$var) 
+levels(data$var) <- c("lvl1", "lvl2", "lvl3", "lvl4", "NA")
+
+hf <- left_join(map.world, data, by = c('region' = 'Country'))
+
+theme_map <- function(...) {
+  theme_minimal() +
+  theme(
+    text = element_text(family = "Ubuntu Regular", color = "#22211d"),
+    axis.line = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    # panel.grid.minor = element_line(color = "#ebebe5", size = 0.2),
+    panel.grid.major = element_line(color = "#ebebe5", size = 0.2),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "#f5f5f2", color = NA), 
+    panel.background = element_rect(fill = "#f5f5f2", color = NA), 
+    legend.background = element_rect(fill = "#f5f5f2", color = NA),
+    panel.border = element_blank(),
+    ...
+  )
+}
+
+ggplot(hf, aes(x = long, y = lat, group = group )) +
+  geom_polygon(aes(fill = tier14)) + 
+  labs(y = NULL, 
+       x = NULL,
+       title = "Figure 1: World Map", 
+       subtitle = "Worldwide var by level", 
+       caption = "Source: World Map") + 
+  theme_map() +
+  theme(title = niceFont,
+        legend.position = "bottom",
+        legend.text = niceFont,
+        panel.border = element_blank()) +
+  scale_fill_viridis(option = "D", 
+                     begin = .05,
+                     end = .9,
+                     direction = -1, 
+                     discrete = TRUE,
+                     name = "Level",
+                     guide = guide_legend(
+                       title.position = "top",
+                       direction = "horizontal",
+                       keyheight = unit(2, units = "mm"))) 
 ```
 
 ## 99. Useful Links
