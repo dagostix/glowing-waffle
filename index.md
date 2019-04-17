@@ -10,8 +10,9 @@
 ## 0. Blog Updates
 **Next update**: descriptions to the model types will be added.
 
-**17.04** - I decided to add more functions to section 3: normal, orderded and multinomial logit and probit. We use these quite often in my political science courses and I thought it would be quite useful to give a quick summary of the different regression types and their uses. Obviously, there are other uses and my explanations/descriptions are not universal. So, do beware when choosing the regressions and make sure it's appropriate for the data and the analysis. You can easily compare the results by using a regression table function such as `stargazer`or `textreg`.
-**–>section 3 update: list of regression types**
+**17.04** - I decided to add more functions to section 3: normal, orderded and multinomial logit and probit. We use these quite often in my political science courses and I thought it would be quite useful to give a quick summary of the different regression types and their uses. Obviously, there are other uses and my explanations/descriptions are not universal. So, do beware when choosing the regressions and make sure it's appropriate for the data and the analysis. You can easily compare the results by using a regression table function such as `stargazer`or `textreg`. Also shared a new link to the book *Geocomputation with R*. This book is incredibly useful for making any type of really fancy looking maps. 
+Professor showed us this cool article: https://www.autodeskresearch.com/publications/samestats. Beware of descriptive statistics kids. 
+**–>section 3 update: list of regression types, and link on maps**
    
 **12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I miunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using `print` again, all hail to `cat`!   
 **–>section 4 update: sharing code from past lectures and seminars on stargazer and maps**   
@@ -113,49 +114,45 @@ There are many different types of plots, here are a few:
 ```
 import::from(ggbeeswarm, geom_beeswarm)
 ggplot(data, aes(x = var1, y = dv)) +
-  geom_beeswarm(cex = 2) +  # scaling for point spacing
-  facet_grid(. ~ var2) +  # creating grid for different var2
-  theme(legend.position = "none")
+  geom_beeswarm(cex = 2)  # scaling for point spacing
 ```
 
-- **Boxplot**: (+) Allows for easy visualisation of overall trends and quartiles. Treats large data well. (-) Does not show precise values.
+- **Boxplot**: (+) Allows for easy visualisation of overall trends and quartiles. Treats large data well. (-) Does not show precise values. Assumption: data is unimodal.
 ```
 ggplot(data, aes(x=var1, y=dv, fill=var2)) +
-  geom_boxplot() +
-  theme(legend.position = "none")
+  geom_boxplot()
 ```
 
 - **Density plot**: (+) Determine if data is normally distributed. Easy to layer onto Histogram. (-) Does not show precise values.
 ```
 ggplot(data, aes(x=dv, y=..density.., alpha = 0.4, fill = var1)) +  # choosing fill according to var1
-  geom_density() +
-  facet_grid(var2 ~ .)+
-  theme(legend.position = "none")
+  geom_density()
 ```
 
-- **Histogram**: (+) Simple and easy to read. (-) Not very interesting. Easily misread when error bars are added. 
+- **Histogram**: (+) Simple and easy to read. (-) Not very interesting. Easily misread when error bars are added. Beware of bin width and start. Check out this great website for optimizing reader understanding of histograms: http://tinlizzie.org/histograms/. 
 ```
 ggplot(data, aes(x=dv, y=..count..)) +
-  geom_histogram(binwidth = 0.2) +  # scaling of bars
-  facet_grid(var2 ~ var1)
+  geom_histogram(binwidth = 0.2)  # scaling of bars
 ```
 
-- **Stacked dot**: (+) Great for small datasets. Easy to read/count dots. (-) Does not show a lot of information.
+- **Stacked dot**: (+) Great for small datasets. Easy to read/count dots. (-) Does not show a lot of information. Beware of bandwidth and granularity, and a stack of dots does not mean that all data points in that stack is exactly the same value. 
 ```
 ggplot(data, aes(x=overshoots, y=..count..)) +
-  geom_dotplot(dotsize = 0.4) +  # sclaing of dot
-  facet_grid(vision ~ device)+
-  theme(legend.position = "none")
+  geom_dotplot(dotsize = 0.4)  # scaling of dots
 ```
 
 - **Violin**: Similar to box plots, but (+) shows probability density.
 ```
 ggplot(data, aes(x=device, y=time, fill = vision)) +
-  geom_violin() +
-  facet_grid(. ~ data$vision)+
-  theme(legend.position = "none")
+  geom_violin()
 ```
 
+#### Facetting
+When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. 
+https://ggplot2.tidyverse.org/reference/facet_grid.html
+
+
+#### Position dodge
 The position dodge below ensures no overlaps on the data points in the plot, which will be included in the "position" argument. 
 ```
 pd <- position_dodge(0.3) 
@@ -166,7 +163,8 @@ ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
  expand_limits(y = 0)
 ```
 
-Now that I have extensively shown different plot types, I think it is useful to show other types of data visualisation, without GGplot. If I ever need to present regression results or dataset statistics, I will always go for `Stargazer`tables. Below you can find a regression table I had used: 
+#### Descriptive statistics & regression tables
+Now that I have extensively shown different plot types, I think it is useful to show other types of data visualisation, without GGplot. If I ever need to present regression results or dataset statistics, I will always go for `Stargazer`tables, although `textreg` is also good. Below you can find a regression table I had used: 
 ```
 stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to show side by side
           header = FALSE,  # removing the header
@@ -183,68 +181,17 @@ stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to s
           covariate.labels = c("(Intercept)", "Inflows", "\\textbf{Lijphart's Index}", "\\textbf{Ideal Point}", "Gov. Effectiveness", "Rule of Law", "Democracy", "(log) GDP per capita", "(log) Population", "NATO Country", "War", "TIFA", "FTA"),  # renaming rows
           type = "latex")  # technically unnecessary, as latex is default. it is useful to have it as one can quickly write "text" to see a quick print while setting the changes
 ```
-You will see here above that some variables have been transformed with a natural logarithm. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in this stacks exchange post: https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530 No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
+#### Logarithmic transformation
+You will see here above that some variables have been transformed with a **natural logarithm**. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in this stacks exchange post: https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530. No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
 
-Another beautiful way to show data, if possible, is through a **map representation of the data**. A teacher in another class had shared with us this technique of using a map to show our data. 
-```
-map.world <- map_data("world")
-#map_data('world') %>% group_by(region) %>% summarise() %>% print(n = Inf)
-
-# Make sure the variable is a factor using the following:
-data$var <- as.factor(data$var) 
-levels(data$var) <- c("lvl1", "lvl2", "lvl3", "lvl4", "NA")
-
-hf <- left_join(map.world, data, by = c('region' = 'Country'))
-
-theme_map <- function(...) {
-  theme_minimal() +
-  theme(
-    text = element_text(family = "Ubuntu Regular", color = "#22211d"),
-    axis.line = element_blank(),
-    axis.text.x = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks = element_blank(),
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank(),
-    # panel.grid.minor = element_line(color = "#ebebe5", size = 0.2),
-    panel.grid.major = element_line(color = "#ebebe5", size = 0.2),
-    panel.grid.minor = element_blank(),
-    plot.background = element_rect(fill = "#f5f5f2", color = NA), 
-    panel.background = element_rect(fill = "#f5f5f2", color = NA), 
-    legend.background = element_rect(fill = "#f5f5f2", color = NA),
-    panel.border = element_blank(),
-    ...
-  )
-}
-
-ggplot(hf, aes(x = long, y = lat, group = group )) +
-  geom_polygon(aes(fill = tier14)) + 
-  labs(y = NULL, 
-       x = NULL,
-       title = "Figure 1: World Map", 
-       subtitle = "Worldwide var by level", 
-       caption = "Source: World Map") + 
-  theme_map() +
-  theme(title = niceFont,
-        legend.position = "bottom",
-        legend.text = niceFont,
-        panel.border = element_blank()) +
-  scale_fill_viridis(option = "D", 
-                     begin = .05,
-                     end = .9,
-                     direction = -1, 
-                     discrete = TRUE,
-                     name = "Level",
-                     guide = guide_legend(
-                       title.position = "top",
-                       direction = "horizontal",
-                       keyheight = unit(2, units = "mm"))) 
-```
+#### Maps 
+Another beautiful way to show data, if possible, is through a **map representation of the data**. The blog post right here is very descriptive and creates a really clean yet colourful map. I have used this one many times, as it is my "go-to" world map guide. I do however usually prefer to choose my own colours. Here is the link: https://brennonborbon.wordpress.com/2017/12/16/creating-simple-world-maps-in-ggplot2/. Also, check out this website/book for other really good inspirations a guides on making beautiful maps in R: Geocomputation with R in the useful links. 
 
 ## 99. Useful Links
 - Chartmaker directory: http://chartmaker.visualisingdata.com/
 - Colours in R: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 - Designing visualization: https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf
+- Geocomputation with R: https://geocompr.robinlovelace.net/index.html
 - GGplot cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 - Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 - Regular expressions cheatsheet: https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf
