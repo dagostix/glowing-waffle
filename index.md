@@ -108,7 +108,14 @@ Here are some different regression functions you can use, depending on the type 
 - **linear mixed-effects model**: `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. REML reference to Restricted Expected Maximium Likelihood
 - **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")`
 
+#### Confounding variables
+This is always a tough topic, as confounding variables are often quite difficult to identify. This page I find useful to help determine if one of your variables (or more) are indeed confounding: http://www.ablongman.com/graziano6e/text_site/MATERIAL/confvar.htm
+
+#### Marginal effects
+This part is often forgotten during the data and model analysis. This page explains well how to get margianl effects in R: https://cran.r-project.org/web/packages/margins/vignettes/Introduction.htm
+
 ## 4. Visualizing Data
+#### types of graphs
 There are many different types of plots, here are a few:
 - **Beeswarm**: (+) Shows all data points for clear density. (-) Overwhelming for large datasets. Harder to read.
 ```
@@ -187,13 +194,20 @@ You will see here above that some variables have been transformed with a **natur
 #### Maps 
 Another beautiful way to show data, if possible, is through a **map representation of the data**. The blog post right here is very descriptive and creates a really clean yet colourful map. I have used this one many times, as it is my "go-to" world map guide. I do however usually prefer to choose my own colours. Here is the link: https://brennonborbon.wordpress.com/2017/12/16/creating-simple-world-maps-in-ggplot2/. Also, check out this website/book for other really good inspirations a guides on making beautiful maps in R: Geocomputation with R in the useful links. 
 
-## 99. Useful Links
+#### Residuals 
+Here is a nice blog post about visualizing residuals: https://drsimonj.svbtle.com/visualising-residuals. I quite like this one as it puts a real emphasis on the residuals which are the furthest. The post also teaches you about useful manipulations with ggplot. 
+
+## 5. Useful Links
 - Chartmaker directory: http://chartmaker.visualisingdata.com/
 - Colours in R: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 - Designing visualization: https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf
 - Geocomputation with R: https://geocompr.robinlovelace.net/index.html
 - GGplot cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
+- GGplot cheatsheet 2: http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/
+- GGplot guide: http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization
 - Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 - Regular expressions cheatsheet: https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf
+- Stargazer cheatsheet: https://www.jakeruss.com/cheatsheets/stargazer/ 
+- Tidyverse style guide: https://style.tidyverse.org/index.html
 
 **to be continued...**
