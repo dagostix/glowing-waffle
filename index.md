@@ -10,7 +10,7 @@
 ## 0. Blog Updates
 **Next update**: descriptions to the model types will be added.
 
-**17.04** - I decided to add more functions to section 3: normal, orderded and multinomial logit and probit. We use these quite often in my political science courses and I thought it would be quite useful to give a quick summary of the different regression types and their uses. Obviously, there are other uses and my explanations/descriptions are not universal. So, do beware when choosing the regressions and make sure it's appropriate for the data and the analysis. You can easily compare the results by using a regression table function such as `stargazer`or `textreg`. Also shared a new link to the book *Geocomputation with R*. This book is incredibly useful for making any type of really fancy looking maps. 
+**17.04** - I decided to add more functions to section 3: normal, ordered and multinomial logit and probit. We use these quite often in my political science courses and I thought it would be quite useful to give a quick summary of the different regression types and their uses. Obviously, there are other uses and my explanations/descriptions are not universal. So, do beware when choosing the regressions and make sure it's appropriate for the data and the analysis. You can easily compare the results by using a regression table function such as `stargazer`or `textreg`. Also shared a new link to the book *Geocomputation with R*. This book is incredibly useful for making any type of really fancy looking maps. 
 Professor showed us this cool article: https://www.autodeskresearch.com/publications/samestats. Beware of descriptive statistics kids.   
 **–>section 3 update: list of regression types, and link on maps**   
    
