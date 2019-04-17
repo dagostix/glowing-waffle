@@ -8,10 +8,13 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Blog Updates
-**Next update**: I will add more functions to section 3: normal, orderded and multinomial logit and probit.   
+**Next update**: descriptions to the model types will be added.
+
+**17.04** - I decided to add more functions to section 3: normal, orderded and multinomial logit and probit. We use these quite often in my political science courses and I thought it would be quite useful to give a quick summary of the different regression types and their uses. Obviously, there are other uses and my explanations/descriptions are not universal. So, do beware when choosing the regressions and make sure it's appropriate for the data and the analysis. You can easily compare the results by using a regression table function such as `stargazer`or `textreg`.
+**–>section 3 update: list of regression types**
    
 **12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I miunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using `print` again, all hail to `cat`!   
-**–>sharing code from past lectures and seminars on stargazer and maps**   
+**–>section 4 update: sharing code from past lectures and seminars on stargazer and maps**   
    
 **26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too!   
 **–>Useful links updated.**   
@@ -92,8 +95,17 @@ results_anova <- analyze(anova_reg)
 print(results_anova) # APA text output
 summary(results_anova) # summary table
 ``` 
-
-Next time: will add normal, orderded and multinomial logit and probit
+Here are some different regression functions you can use, depending on the type of data you have. 
+- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above)
+- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))`
+- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))`
+- **ordered probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. The same can be done with a logit model, by simply changing the method. Here "Hess" is set to `TRUE`as we want the information matrix to get standard errors. 
+- **multinomial model**: `multinom(dv ~ iv1 + iv2, data = df)` 
+- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables.
+- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")`
+- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))`
+- **linear mixed-effects model**: `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. REML reference to Restricted Expected Maximium Likelihood
+- **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")`
 
 ## 4. Visualizing Data
 There are many different types of plots, here are a few:
