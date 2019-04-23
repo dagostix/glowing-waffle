@@ -8,19 +8,23 @@
 99. [Useful links](#99-Useful-links)
 
 ## 0. Blog Updates
-**Next update**: descriptions to the model types will be added.
+**Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
+
+**23.04** - I added the full descriptions for each model, and also added a few new models that I will be describing next time. Also thought I'd add a thought process on how to actually choose a model, which is not always easy nor obvious. The questions I've written are not full-proof, but can give you a small idea of which models to consider during the analysis. Don't forget to always check up on the residuals to see how you're doing.  
+I also thought that just good ol' copy-pasting of links might not be the best looking choice. So now the links have been integrated in the text to look nicer – and it does look significantly nicer. I added another technique of importing files with the function `file.choose()` which allows the user to directly search in their documents for the correct file. I've been using this in a R file that I share with a colleague at work, allowing us to simply choose the file every time instead of re-writing a path. A list of shortcuts for RStudio has also been added in the useful links. My ultimate favourite is of course the "alt" + "-" to get an automatic arrow with spaces on both sides " <- ".   
+**->section 2 & 3 updated: descriptions of regression types & styling**
 
 **17.04** - I decided to add more functions to section 3: normal, ordered and multinomial logit and probit. We use these quite often in my political science courses and I thought it would be quite useful to give a quick summary of the different regression types and their uses. Obviously, there are other uses and my explanations/descriptions are not universal. So, do beware when choosing the regressions and make sure it's appropriate for the data and the analysis. You can easily compare the results by using a regression table function such as `stargazer`or `textreg`. Also shared a new link to the book *Geocomputation with R*. This book is incredibly useful for making any type of really fancy looking maps. 
-Professor showed us this cool article: https://www.autodeskresearch.com/publications/samestats. Beware of descriptive statistics kids.   
+Professor showed us [this cool article](https://www.autodeskresearch.com/publications/samestats). Beware of descriptive statistics kids.   
 **–>section 3 update: list of regression types, and link on maps**   
    
-**12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I misunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat`would just solve all my problems. I'm never using `print` again, all hail to `cat`!   
+**12.04** - So, I'm back today with adding some more useful code and to add a bit more *oompf* and colour to my previous entries (as I misunderstood the essential blog part of this library). We didn't have class this week as it was a holiday, so I searched a bit through my past classes until I found some interesting code or functions to add here. I thought they were quite useful and would find their place here. Also, I used the `grep`function for the first time this week, and it is incredibly powerful. It allows to find or match values in a vetor, then combined with `gsub` and regular expressions to replace the values for optimal usage. I also wanted to share the function `cat` and how much better it is than `print`. As `print`has the tendency to add unnecessary spacing and create strange looking outputs, especially when mixing strings with variables, I found that `cat` would just solve all my problems. I'm never using `print` again, all hail to `cat`!   
 **–>section 4 update: sharing code from past lectures and seminars on stargazer and maps**   
    
 **26.03** - I came accross a something new at work, Regular Expressions. I've been using them in a data cleaning project, and I have found them to be incredibly useful. Since I did not know much (or anything) of regular expression, I did some research on it. While doing that, I came accross this very useful cheatsheet and ended up using it a lot, keeping it besoide me as I worked. Since I had been using the cheatsheet so much, I thought it would be nice to add the link here and share it too!   
 **–>Useful links updated.**   
    
-**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. As we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. This type of analysis goes hand in hand with the link "Chartmaker directory" that explains which chart to make for which sort of data. It's a great help when you're unsure about how to effectively visualise and share data. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. Here is the full description of how it works: https://ggplot2.tidyverse.org/reference/facet_grid.html You'll also find in the usefull links a cheatsheet for GGplot, which always helps to refresh one's memory. The functions there are mainly the basic ones, so once it gets more complicated, sometimes an interent search will prove more fruitful.   
+**22.03** -  The semester has reached it's full motion, and I didn't have so much inspiration regarding code to add. As we worked on different types of plots during class, and it was quite interesting to see how they can be used to convey different information. I tried to write down the positive and negative aspects of using each graph/plot type. This type of analysis goes hand in hand with the link "Chartmaker directory" that explains which chart to make for which sort of data. It's a great help when you're unsure about how to effectively visualise and share data. We can also see the use of different uses of the `facet_grid` function, very interesting to use it to compare and contrast different variables. [Here](https://ggplot2.tidyverse.org/reference/facet_grid.html) is the full description of how it works. You'll also find in the usefull links a cheatsheet for GGplot, which always helps to refresh one's memory. The functions there are mainly the basic ones, so once it gets more complicated, sometimes an interent search will prove more fruitful.   
 **–>More details added to sections 3 and 4.**  
    
 **11.03** - As mentioned in the previous entry, I still needed to annotate the code in sections 2 and 3, so you will find now more explanations. Section 4 was created, and I added a plot that we worked on during class today. The plot looks much nicer than the code written here, it clearly does not do it justice!! However, the important part of it is essentially the position dodge. In this case we have a variable with three different possible values on the x-axis. In order to avoid them overlapping if the y-axis values are too close, a position dodge allows the three dots to be side by side (slightly below the mark, on the mark and slightly above the mark). This makes the plots drastically more readable and easy to understand. I will definitely be using this for my next data visualisations!   
@@ -77,7 +81,14 @@ data <-
     var1 = as.factor(var1),
     var2 = as.factor(var2))
 ``` 
-Many different function with read.*type of file*() can be used. However, what I find most useful, when no mutation is necessary, is to simply go to the folder in the 'file' section in Rstudio, right click and import the data. 
+
+Also, another stylish way to import data, especially when working as a team on the same R file: allowing the user to selest the file themselves. Observe.
+```
+data <– read_excel(file.choose(), skip=5) %>%  # choose file on your computer
+  as_tibble %>%  #construct data frame
+  setNames(., c(x1, x2, etc.))  # set column names
+``` 
+Many different function with read.*type_of_file*() can be used. However, what I find most useful, when no mutation is necessary, is to simply go to the folder in the 'file' section in Rstudio, right click and import the data. 
 
 ## 3. Data Analysis 
 Basic regression with a linear model and two variables. The * sign does both the interaction (:) and addition (+).
@@ -93,20 +104,87 @@ anova_reg <- anova(reg)
 Formatting with the `psycho`package.
 ```
 results_anova <- analyze(anova_reg)
-print(results_anova) # APA text output
-summary(results_anova) # summary table
+print(results_anova)  # APA text output
+summary(results_anova)  # summary table
 ``` 
-Here are some different regression functions you can use, depending on the type of data you have. 
-- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above)
-- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))`
-- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))`
-- **ordered probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. The same can be done with a logit model, by simply changing the method. Here "Hess" is set to `TRUE`as we want the information matrix to get standard errors. 
-- **multinomial model**: `multinom(dv ~ iv1 + iv2, data = df)` 
-- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables.
-- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")`
-- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))`
-- **linear mixed-effects model**: `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. REML reference to Restricted Expected Maximium Likelihood
-- **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")`
+
+#### Different regression models
+Here are some different regression functions you can use, depending on the type of data you have. Also linked wikipedia articles which explain in detail each model. Don't hate on wikipedia.
+- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above), can be used as a simple of multiple linear regression depending on the number of IVs used in the model. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance. [Read more](https://en.wikipedia.org/wiki/Linear_regression)
+
+- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))` This is also a glm model, similar to the logit with a binary DV, but assumes a normal distribution of errors instead. It estimates the odds of an observation happening depending on the characteristics implented in the model. –> "**prob**ability & un**it**" [Read more](https://en.wikipedia.org/wiki/Probit_model)
+
+- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))` glm is used to fit generalized linear models, specified by giving a symbolic description of the linear predictor and a description of the error distribution. This is a logistic model specified by the family argument, generally used for dependent variables that are binary. It assumes a standard logistic distribution of errors, estimating the probabilities in log odds. –> "**log**istic & un**it**" [Read more](https://en.wikipedia.org/wiki/Logistic_regression)
+
+- **ordered probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named. The same can be done with a logit model, by simply changing the method. Here "Hess" is set to `TRUE` as we want the information matrix to get standard errors. The "ordered" part of the model implies that our DV here is not binary anymore (as a probit/logit should be), and could be instead a Likert-scale, grades, etc. [Read more on probit](https://en.wikipedia.org/wiki/Ordered_probit) [or logit](https://en.wikipedia.org/wiki/Ordered_logit)
+
+- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories.  [Read more](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
+
+- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")` So, we find another form of glm, this time used for count data (number of deaths, population, events etc.) or contigency tables (frequency/count in table form). It assumes that the DV has a [poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution), and that the counts are independent of each other, meaning one count will not lead directly to another. It also assumes that the variance and mean are equal. [Read more](https://en.wikipedia.org/wiki/Poisson_regression)
+
+- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))` A modification of the system function glm() to include estimation of the additional parameter, theta, for a Negative Binomial generalized linear model. Also used for count data, it is a mixture of the Poisson model, except does not have the variance-mean assumption, with a gamma distribution. However, different distributions are related as can be [read here](https://en.wikipedia.org/wiki/Negative_binomial_distribution#Related_distributions). [Read more on the NB distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution)
+
+- **zero-inflated models**: including both Poisson and NB. [Read more](https://en.wikipedia.org/wiki/Zero-inflated_model)
+
+- **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")` [Read more](https://en.wikipedia.org/wiki/Panel_analysis)
+
+- **fixed effects model**: [Read more](https://en.wikipedia.org/wiki/Fixed_effects_model)
+
+- **random effects modell**: [Read more](https://en.wikipedia.org/wiki/Random_effects_model)
+
+- **linear mixed-effects model**: `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood [Read more](https://en.wikipedia.org/wiki/Mixed_model)
+
+#### How to choose a regression?
+So, now that we have a list of regressions, how to choose the appropriate one for our data and analysis? Try to answer these questions:
+
+1. Are you doing a regression for the first time ever in your life?
+   - Yes, and I don't know anything about statistics –––> **linear**
+   - No, I know 2+ things on the topic  :squirrel: ––> *go to 2)*
+
+2. What type of DV do you have?
+   - Binary. ––> *go to 4)*
+   - Categories. ––> *go to 6)*
+   - Continuous. ––> *go to 8)*
+   - Count data. ––> *go to 3)*
+   - Ordered. ––> *go to 5)*
+   - Panel data. ––> *go to 7)*
+
+3. How many zeros/0 are present in your DV?  
+   - If there are no or a small proportion of zeros present:
+     - If the variance is equal to the mean ––––> **Poisson**
+     - If overdistribution is present, the variance is superior to the mean ––––> **Negative binomial**
+   - If a large proportion of zeros are present:
+     - If the variance is equal to the mean ––––> **Zero-inflated Poisson**
+     - If overdistribution is present ––––> **Zero-inflated negative binomial**
+
+4. What type of cumulative distribution function (CDF - f(\*)) do you want? / What sector are you in?
+   - Standard normal distribution / economics or politcal science ––––> **Probit** 
+   - Logistic distribution / health sciences ––––> **Logit** 
+
+5. Do you prefer probit or logit?
+   - Probit ––––> **Ordered probit**
+   - Logit ––––> **Ordered logit**
+
+6. Do you prefer probit or logit?
+   - Probit ––––> **Multinomial probit**
+   - Logit ––––> **Multinomial logit**
+   
+7. Are there effects over time and unique individual attributes?
+   - Neither ––––> **(independently) Pooled**
+   - No effects over time, but unique individual attributes ––––> **Fixed effects**
+   - Effects over time, but no unique individual attributes ––––> **Random effects**
+   - Both fixed and random effects, effects over time and unique individual attributes ––––> **Mixed effects**
+
+8. Can you fit your data with a linear regression?
+   - Yes, I can use a linear regression:
+      - try this one first !OLS is prone to overfitting & sensitive to multicollinearity & outliers! ––––> **Ordinary least squares** 
+      - If few observations and/or high correlation IVs ––––> **Partial least squares**
+      - If large multicollinearity ––––> **Ridge** or **Lasso regression**
+      - If large amount of outsliers ––––> **Least absolute deviation**
+    - No, then I'll use a non-linear regression:
+      - good luck :) 
+
+You can always check the residuals to see if any patterns/heteroskedasticity stand out or if they're random and all is well. Also, with the probit and logits, they give quite similar results and there are many different reasons to use one rather than the other. Some really good explanations can be found [here](https://stats.stackexchange.com/questions/20523/difference-between-logit-and-probit-models). Thank you [Jim](https://statisticsbyjim.com/regression/choosing-regression-analysis/) for your endless advice on statistics.
 
 #### Confounding variables
 This is always a tough topic, as confounding variables are often quite difficult to identify. This page I find useful to help determine if one of your variables (or more) are indeed confounding: http://www.ablongman.com/graziano6e/text_site/MATERIAL/confvar.htm
@@ -155,9 +233,7 @@ ggplot(data, aes(x=device, y=time, fill = vision)) +
 ```
 
 #### Facetting
-When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. 
-https://ggplot2.tidyverse.org/reference/facet_grid.html
-
+When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
 
 #### Position dodge
 The position dodge below ensures no overlaps on the data points in the plot, which will be included in the "position" argument. 
@@ -189,10 +265,10 @@ stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to s
           type = "latex")  # technically unnecessary, as latex is default. it is useful to have it as one can quickly write "text" to see a quick print while setting the changes
 ```
 #### Logarithmic transformation
-You will see here above that some variables have been transformed with a **natural logarithm**. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in this stacks exchange post: https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530. No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
+You will see here above that some variables have been transformed with a **natural logarithm**. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in [this stacks exchange post](https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530). No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
 
 #### Maps 
-Another beautiful way to show data, if possible, is through a **map representation of the data**. The blog post right here is very descriptive and creates a really clean yet colourful map. I have used this one many times, as it is my "go-to" world map guide. I do however usually prefer to choose my own colours. Here is the link: https://brennonborbon.wordpress.com/2017/12/16/creating-simple-world-maps-in-ggplot2/. Also, check out this website/book for other really good inspirations a guides on making beautiful maps in R: Geocomputation with R in the useful links. 
+Another beautiful way to show data, if possible, is through a **map representation of the data**. The blog post right here is very descriptive and creates a really clean yet colourful map. I have used this one many times, as it is [my "go-to" world map guide](https://brennonborbon.wordpress.com/2017/12/16/creating-simple-world-maps-in-ggplot2/). I do however usually prefer to choose my own colours. Also, check out this website/book for other really good inspirations a guides on making beautiful maps in R: Geocomputation with R in the useful links. 
 
 #### Residuals 
 Here is a nice blog post about visualizing residuals: https://drsimonj.svbtle.com/visualising-residuals. I quite like this one as it puts a real emphasis on the residuals which are the furthest. The post also teaches you about useful manipulations with ggplot. 
@@ -207,6 +283,7 @@ Here is a nice blog post about visualizing residuals: https://drsimonj.svbtle.co
 - GGplot guide: http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization
 - Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 - Regular expressions cheatsheet: https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf
+- RStudio shorcuts: https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts
 - Stargazer cheatsheet: https://www.jakeruss.com/cheatsheets/stargazer/ 
 - Tidyverse style guide: https://style.tidyverse.org/index.html
 
