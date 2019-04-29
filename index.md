@@ -10,6 +10,9 @@
 ## 0. Blog Updates
 **Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
 
+**29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code. 
+**->section 3 updated: descriptions of regressions**
+
 **23.04** - I added the full descriptions for each model, and also added a few new models that I will be describing next time. Also thought I'd add a thought process on how to actually choose a model, which is not always easy nor obvious. The questions I've written are not full-proof, but can give you a small idea of which models to consider during the analysis. Don't forget to always check up on the residuals to see how you're doing.  
 I also thought that just good ol' copy-pasting of links might not be the best looking choice. So now the links have been integrated in the text to look nicer – and it does look significantly nicer. I added another technique of importing files with the function `file.choose()` which allows the user to directly search in their documents for the correct file. I've been using this in a R file that I share with a colleague at work, allowing us to simply choose the file every time instead of re-writing a path. A list of shortcuts for RStudio has also been added in the useful links. My ultimate favourite is of course the "alt" + "-" to get an automatic arrow with spaces on both sides " <- ".   
 **->section 2 & 3 updated: descriptions of regression types & styling**
@@ -91,22 +94,10 @@ data <– read_excel(file.choose(), skip=5) %>%  # choose file on your computer
 Many different function with read.*type_of_file*() can be used. However, what I find most useful, when no mutation is necessary, is to simply go to the folder in the 'file' section in Rstudio, right click and import the data. 
 
 ## 3. Data Analysis 
-Basic regression with a linear model and two variables. The * sign does both the interaction (:) and addition (+).
+Here is a basic regression with a linear model and two variables. The independent variables (iv1 & iv2) are the regressors a.k.a. predictors, and the dependent variable (dv) is the response variable, a.k.a. the outcome variable. The * sign does both the interaction (:) and addition (+). The main effect is the mean differences mong the levels of one factore. The interaction effect occurs when the mean differences among conditions differ from what predecited from overall main effect (def. from class). 
 ```
 reg <- lm(dv ~ iv1 * iv2, data = data)
 ```
-
-Then one-way ANOVA – used to compare means of multiple samples. They can be the same (null hypothesis) or different (alternative hypothesis). Assumptions: (1) observations are random, (2) data is normally distributed and (3) the populations have a normal variance (check with Levene's test)
-```
-anova_reg <- anova(reg)
-```
-
-Formatting with the `psycho`package.
-```
-results_anova <- analyze(anova_reg)
-print(results_anova)  # APA text output
-summary(results_anova)  # summary table
-``` 
 
 #### Different regression models
 Here are some different regression functions you can use, depending on the type of data you have. Also linked wikipedia articles which explain in detail each model. Don't hate on wikipedia.
@@ -189,8 +180,36 @@ You can always check the residuals to see if any patterns/heteroskedasticity sta
 #### Confounding variables
 This is always a tough topic, as confounding variables are often quite difficult to identify. This page I find useful to help determine if one of your variables (or more) are indeed confounding: http://www.ablongman.com/graziano6e/text_site/MATERIAL/confvar.htm
 
+Below we can see differences between the correlations:  
+
+![correlation](http://www.transum.org/software/SW/Scatter_Graphs/Examples.png)
+
+#### Coefficients & regression results 
+Once we have performed our regression, we obviously need to understand the results (what's the point otherwise?) SO, usual results include the (coefficient) estimates, the standard errors, t-statistic and the P value for each variable + the intercept. Here are some quick definitions of the aforementioned. 
+- **coefficient**: measures the betas in our regression equation. We will have the following equation: *DV = intercept_coef + var1_coef * var1* [Read more](https://en.wikipedia.org/wiki/Linear_combination)
+- **std. error**: measures the standard deviation of the sample distribution. It's calculated by dividing the std. deviation by the square root of the sample size: `sd(x)/sqrt(length(x))`. The std. error of the intercept and coefficient allows to calculate the confidence interval of the regression.  [Read more](https://en.wikipedia.org/wiki/Standard_error)
+- **t-statistic** (or t-value): measures the strength of the noise/variation in the data represented in units of standard error. if t is closer to 0, there is less evidence for a significant difference, therefore as the t increases, so does the evidence. `tValue = (mean(data) - 10) / (sd(data) / sqrt(length(data)))` [Read more](https://en.wikipedia.org/wiki/T-statistic)
+- **P-value**: measures the significance of the variable and either rejects the null or alternative hypothesis. It's calculated from the t-value as you can see in the manual version of the calculation: `pValue = 2 * pt(-abs(tValue), df = length(data) - 1)` [Read more](https://en.wikipedia.org/wiki/P-value)
+
+*coming up next!*
+- **R square**: Normal & adjusted
+- **F-statistic**:
+
 #### Marginal effects
 This part is often forgotten during the data and model analysis. This page explains well how to get margianl effects in R: https://cran.r-project.org/web/packages/margins/vignettes/Introduction.htm
+
+#### ANOVA
+Then one-way ANOVA – used to compare means of multiple samples. They can be the same (null hypothesis) or different (alternative hypothesis). Assumptions: (1) observations are random, (2) data is normally distributed and (3) the populations have a normal variance (check with Levene's test)
+```
+anova_reg <- anova(reg)
+```
+
+Formatting with the `psycho`package.
+```
+results_anova <- analyze(anova_reg)
+print(results_anova)  # APA text output
+summary(results_anova)  # summary table
+``` 
 
 ## 4. Visualizing Data
 #### types of graphs
