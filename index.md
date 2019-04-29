@@ -10,7 +10,7 @@
 ## 0. Blog Updates
 **Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
 
-**29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code. 
+**29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code.   
 **->section 3 updated: descriptions of regressions**
 
 **23.04** - I added the full descriptions for each model, and also added a few new models that I will be describing next time. Also thought I'd add a thought process on how to actually choose a model, which is not always easy nor obvious. The questions I've written are not full-proof, but can give you a small idea of which models to consider during the analysis. Don't forget to always check up on the residuals to see how you're doing.  
