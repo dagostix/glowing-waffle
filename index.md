@@ -1,14 +1,20 @@
 # The R code library
+## Stats 101 
 
 **Index**
 1. [Useful Packages](#1-Useful-Packages)
 2. [Importing & Reading Data](#2-Importing--Reading-Data)
 3. [Data Analysis](#3-Data-Analysis)
 4. [Visualizing Data](#4-Visualizing-Data)
-99. [Useful links](#99-Useful-links)
+5. [Useful links](#5-Useful-links)
+
+*Sources: Most of the info below is based on or from my professor Chat Wacharamanotham's course "Quantitative Methods in Human-Computer Interaction" at the University of Zürich. With any mention of packages or functions, some text can be from their help documentation.*
 
 ## 0. Blog Updates
 **Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
+
+**03.05** - tiny update, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. 
+**->section 3 updated: descriptions of regressions**
 
 **29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code.   
 **->section 3 updated: descriptions of regressions**
@@ -119,11 +125,11 @@ Here are some different regression functions you can use, depending on the type 
 
 - **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")` [Read more](https://en.wikipedia.org/wiki/Panel_analysis)
 
-- **fixed effects model**: [Read more](https://en.wikipedia.org/wiki/Fixed_effects_model)
+- **fixed effects model**: `scatterplot(dv ~ df$iv1|df$parameter, smooth=FALSE)` Each parameter (policy, treatment, etc.) has its own baseline response and these effects are correlated with the ivs. This controls unobservable heterogeneity in the data.  If `smooth=TRUE`, then both the mean function and variance funtions are drawn for ungrouped data, and the mean function only is drawn for grouped data, `smooth=FALSE` is neither. [Read more](https://en.wikipedia.org/wiki/Fixed_effects_model)
 
-- **random effects modell**: [Read more](https://en.wikipedia.org/wiki/Random_effects_model)
+- **random effects modell**: Basically, each unit (countries, participants, etc.) has its own baseline response, creating one intercept (beta_0) for each unit. These individual specific effects do not correlare with the ivs. This controls unobservable heterogeneity in the data. [Read more](https://en.wikipedia.org/wiki/Random_effects_model)
 
-- **linear mixed-effects model**: `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood [Read more](https://en.wikipedia.org/wiki/Mixed_model)
+- **mixed-effects model**: a.k.a. hierarchical model a.k.a. multilevel linear model `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood [Read more](https://en.wikipedia.org/wiki/Mixed_model)
 
 #### How to choose a regression?
 So, now that we have a list of regressions, how to choose the appropriate one for our data and analysis? Try to answer these questions:
@@ -160,7 +166,7 @@ So, now that we have a list of regressions, how to choose the appropriate one fo
    - Probit ––––> **Multinomial probit**
    - Logit ––––> **Multinomial logit**
    
-7. Are there effects over time and unique individual attributes?
+7. Are there effects over time and unique individual attributes? \*
    - Neither ––––> **(independently) Pooled**
    - No effects over time, but unique individual attributes ––––> **Fixed effects**
    - Effects over time, but no unique individual attributes ––––> **Random effects**
@@ -175,10 +181,12 @@ So, now that we have a list of regressions, how to choose the appropriate one fo
     - No, then I'll use a non-linear regression:
       - good luck :) 
 
+* the [Durbin–Wu–Hausman test](https://en.wikipedia.org/wiki/Durbin%E2%80%93Wu%E2%80%93Hausman_test) can be used to determine if fixed or random effects is better. Also, if the difference remains unclear to you, check out this [post](https://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode).
+
 You can always check the residuals to see if any patterns/heteroskedasticity stand out or if they're random and all is well. Also, with the probit and logits, they give quite similar results and there are many different reasons to use one rather than the other. Some really good explanations can be found [here](https://stats.stackexchange.com/questions/20523/difference-between-logit-and-probit-models). Thank you [Jim](https://statisticsbyjim.com/regression/choosing-regression-analysis/) for your endless advice on statistics.
 
 #### Confounding variables
-This is always a tough topic, as confounding variables are often quite difficult to identify. This page I find useful to help determine if one of your variables (or more) are indeed confounding: http://www.ablongman.com/graziano6e/text_site/MATERIAL/confvar.htm
+This is always a tough topic, as confounding variables are often quite difficult to identify. This page I find useful to help determine if one of your variables (or more) are indeed confounding: [link](http://www.ablongman.com/graziano6e/text_site/MATERIAL/confvar.htm)
 
 Below we can see differences between the correlations:  
 
@@ -199,7 +207,7 @@ Once we have performed our regression, we obviously need to understand the resul
 This part is often forgotten during the data and model analysis. This page explains well how to get margianl effects in R: https://cran.r-project.org/web/packages/margins/vignettes/Introduction.htm
 
 #### ANOVA
-Then one-way ANOVA – used to compare means of multiple samples. They can be the same (null hypothesis) or different (alternative hypothesis). Assumptions: (1) observations are random, (2) data is normally distributed and (3) the populations have a normal variance (check with Levene's test)
+The one-way ANOVA is used to compare means of multiple samples. They can be the same (null hypothesis) or different (alternative hypothesis). Assumptions: (1) observations are random, (2) data is normally distributed and (3) the populations have a normal variance (check with Levene's test)
 ```
 anova_reg <- anova(reg)
 ```
@@ -250,6 +258,9 @@ ggplot(data, aes(x=overshoots, y=..count..)) +
 ggplot(data, aes(x=device, y=time, fill = vision)) +
   geom_violin()
 ```
+
+#### Special variables
+When you're setting up your plot aesthetics, sometimes you may wish to use a variable that is not directly linked to your dataset. The first special variable is `..count..`, which is the equivalent of `stat(count)` and tallies the number of occurences. Then we have the `..density..`variable which \* *drumroll* \* will show the density estimates. I tried finding other ones, but I was not successful in doing so. All I managed to find are unanswered stack overflow questions or badly answered ones, so if anyone knows anything more, I am here. Tell me please. 
 
 #### Facetting
 When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
@@ -305,5 +316,3 @@ Here is a nice blog post about visualizing residuals: https://drsimonj.svbtle.co
 - RStudio shorcuts: https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts
 - Stargazer cheatsheet: https://www.jakeruss.com/cheatsheets/stargazer/ 
 - Tidyverse style guide: https://style.tidyverse.org/index.html
-
-**to be continued...**
