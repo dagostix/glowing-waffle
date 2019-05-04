@@ -265,6 +265,14 @@ When you're setting up your plot aesthetics, sometimes you may wish to use a var
 #### Facetting
 When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
 
+If you're not using ggplot or any other grob, like a simple `plot()` function, the gridExtra and other gridding function probably will not work. So you can use the `par()`function. You simply need to specify the number of rows and columns you wish to have and write the plots below. 
+```
+par(mfrow=c(2,2))
+plot(plot1)
+plot(plot2)
+plot(plot3)
+```
+
 #### Position dodge
 The position dodge below ensures no overlaps on the data points in the plot, which will be included in the "position" argument. 
 ```
