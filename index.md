@@ -13,7 +13,7 @@
 ## 0. Blog Updates
 **Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
 
-**03.05** - tiny update, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. 
+**03.05** - tiny update, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. + small addition on the 4th on gridding. 
 **->section 3 updated: descriptions of regressions**
 
 **29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code.   
