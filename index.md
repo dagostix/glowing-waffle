@@ -4,7 +4,7 @@ This is an R code library mixed in with some statistics knowledge, aimed at stud
 
 *Sources: Most of the info below is based on or from my professor Chat Wacharamanotham's course "Quantitative Methods in Human-Computer Interaction" at the University of Zurich. With any mention of packages or functions, some text can be from their help documentation.*
 
-**Index**
+## Index
 1. [Useful Packages](#1-Useful-Packages)
 2. [Importing & Reading Data](#2-Importing--Reading-Data)  
    2.1. [Importing data](#21-Importing-data)   
@@ -127,45 +127,87 @@ reg <- lm(dv ~ iv1 * iv2, data = data)
 
 ### 3.1. Regression models
 Here are some different regression functions you can use, depending on the type of data you have. Also linked wikipedia articles which explain in detail each model. Don't hate on wikipedia.
-- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above), can be used as a simple of multiple linear regression depending on the number of IVs used in the model. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance. [RDocumentation](https://www.rdocumentation.org/packages/stats/versions/3.5.3/topics/lm); [Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
+- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above), can be used as a simple of multiple linear regression depending on the number of IVs used in the model. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance.  
+[Example](https://www.statmethods.net/stats/regression.html) • 
+[RDocumentation](https://www.rdocumentation.org/packages/stats/versions/3.5.3/topics/lm) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
 
-- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))` This is also a glm model, similar to the logit with a binary DV, but assumes a normal distribution of errors instead. It estimates the odds of an observation happening depending on the characteristics implented in the model. –> "**prob**ability & un**it**". [RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm); [Wikipedia](https://en.wikipedia.org/wiki/Probit_model)
+- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))` This is also a glm model, similar to the logit with a binary DV, but assumes a normal distribution of errors instead. It estimates the odds of an observation happening depending on the characteristics implented in the model. –> "**prob**ability & un**it**".   
+[Example](https://stats.idre.ucla.edu/r/dae/probit-regression/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Probit_model)
 
-- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))` glm is used to fit generalized linear models, specified by giving a symbolic description of the linear predictor and a description of the error distribution. This is a logistic model specified by the family argument, generally used for dependent variables that are binary. It assumes a standard logistic distribution of errors, estimating the probabilities in log odds. –> "**log**istic & un**it**". [RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm); [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)
+- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))` glm is used to fit generalized linear models, specified by giving a symbolic description of the linear predictor and a description of the error distribution. This is a logistic model specified by the family argument, generally used for dependent variables that are binary. It assumes a standard logistic distribution of errors, estimating the probabilities in log odds. –> "**log**istic & un**it**".  
+[Example](https://stats.idre.ucla.edu/r/dae/logit-regression/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)
 
-- **ordered logit/probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named. The same can be done with a logit model, by simply changing the method to `"logit"`. Here "Hess" is set to `TRUE` as we want the information matrix to get standard errors. The "ordered" part of the model implies that our DV here is not binary anymore (as a probit/logit should be), and could be instead a Likert-scale, grades, etc.[RDocumentation](https://www.rdocumentation.org/packages/tram/versions/0.2-5/topics/Polr); [Wikipedia on probit](https://en.wikipedia.org/wiki/Ordered_probit); [Wikipedia on logit](https://en.wikipedia.org/wiki/Ordered_logit)
+- **ordered logit/probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named. The same can be done with a logit model, by simply changing the method to `"logit"`. Here "Hess" is set to `TRUE` as we want the information matrix to get standard errors. The "ordered" part of the model implies that our DV here is not binary anymore (as a probit/logit should be), and could be instead a Likert-scale, grades, etc.   
+[Example logit](https://stats.idre.ucla.edu/r/dae/ordinal-logistic-regression/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/tram/versions/0.2-5/topics/Polr) • 
+[Wikipedia probit](https://en.wikipedia.org/wiki/Ordered_probit) • 
+[Wikipedia logit](https://en.wikipedia.org/wiki/Ordered_logit)
 
-- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories.[RDocumentation](https://www.rdocumentation.org/packages/mlogit/versions/0.4-1/topics/mlogit); [Wikipedia](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
+- **multinomial logistic model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories.  
+[Example](https://stats.idre.ucla.edu/r/dae/multinomial-logistic-regression/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/mlogit/versions/0.4-1/topics/mlogit) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
 
-- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")` So, we find another form of glm, this time used for count data (number of deaths, population, events etc.) or contigency tables (frequency/count in table form). It assumes that the DV has a [poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution), and that the counts are independent of each other, meaning one count will not lead directly to another. It also assumes that the variance and mean are equal.[RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm); [Wikipedia](https://en.wikipedia.org/wiki/Poisson_regression)
+- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")` So, we find another form of glm, this time used for count data (number of deaths, population, events etc.) or contigency tables (frequency/count in table form). It assumes that the DV has a [poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution), and that the counts are independent of each other, meaning one count will not lead directly to another. It also assumes that the variance and mean are equal.  
+[Example](https://stats.idre.ucla.edu/r/dae/poisson-regression/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Poisson_regression)
 
-- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))` A modification of the system function glm() to include estimation of the additional parameter, theta, for a Negative Binomial generalized linear model. Also used for count data, it is a mixture of the Poisson model, except does not have the variance-mean assumption, with a gamma distribution. However, different distributions are related as can be [read here](https://en.wikipedia.org/wiki/Negative_binomial_distribution#Related_distributions). [RDocumentation](https://www.rdocumentation.org/packages/MASS/versions/7.3-51.4/topics/glm.nb); [Wikipedia](https://en.wikipedia.org/wiki/Negative_binomial_distribution)
+- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))` A modification of the system function glm() to include estimation of the additional parameter, theta, for a Negative Binomial generalized linear model. Also used for count data, it is a mixture of the Poisson model, except does not have the variance-mean assumption, with a gamma distribution. However, different distributions are related as can be [read here](https://en.wikipedia.org/wiki/Negative_binomial_distribution#Related_distributions).   
+[Example](https://stats.idre.ucla.edu/r/dae/negative-binomial-regression/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/MASS/versions/7.3-51.4/topics/glm.nb) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Negative_binomial_distribution)
 
-- **zero-inflated Poisson model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df)` a function from the `pscl` package. This is for when you have a large proportion of zeros in your data that will cause a skew. Here is a [great description](https://stats.idre.ucla.edu/r/dae/zip/) of how to perform the model. [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl); [Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
+- **zero-inflated Poisson model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df)` a function from the `pscl` package. This is for when you have a large proportion of zeros in your data that will cause a skew. 
+[Example](https://stats.idre.ucla.edu/r/dae/zip/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
 
-- **zero-inflated negative binomial model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df, dist = "negbin", EM = TRUE)` from the `pscl` package. This is the same function as the ZI Poisson, with a different distance. Here is a [great description](https://stats.idre.ucla.edu/r/dae/zinb/) of how to perform the model. [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl); [Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
+- **zero-inflated negative binomial model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df, dist = "negbin", EM = TRUE)` from the `pscl` package. This is the same function as the ZI Poisson, with a different distance.  
+[Example](https://stats.idre.ucla.edu/r/dae/zinb/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
 
-- **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")`. Linear models for panel data estimated using the `lm` function on transformed data. [RDocumentation](https://www.rdocumentation.org/packages/plm/versions/1.6-5/topics/plm); [Wikipedia](https://en.wikipedia.org/wiki/Panel_analysis)
+- **pooling model**: `plm(dv ~ iv1, data = df, index = c("param2","param3"), model = "pooling")`. Linear models for panel data estimated using the `lm` function on transformed data.  
+[Paper](https://www.economics.ox.ac.uk/materials/papers/12049/paper615.pdf) • 
+[RDocumentation](https://www.rdocumentation.org/packages/plm/versions/1.6-5/topics/plm) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Panel_analysis)
 
-- **fixed effects model**: `scatterplot(dv ~ df$iv1|df$parameter, smooth=FALSE)` Each parameter (policy, treatment, etc.) has its own baseline response and these effects are correlated with the ivs. This controls unobservable heterogeneity in the data.  If `smooth=TRUE`, then both the mean function and variance funtions are drawn for ungrouped data, and the mean function only is drawn for grouped data, `smooth=FALSE` is neither. [RDocumentation](https://www.rdocumentation.org/packages/car/versions/3.0-2/topics/scatterplot); [Wikipedia](https://en.wikipedia.org/wiki/Fixed_effects_model)
+- **fixed effects model**: `scatterplot(dv ~ df$iv1|df$parameter, smooth = FALSE)` OR `plm(dv ~ iv1, data = df, index = c("param1", "param2"), model = "within")`. Each parameter (policy, treatment, etc.) has its own baseline response and these effects are correlated with the ivs. This controls unobservable heterogeneity in the data. For the `scatterplot()` function, if `smooth=TRUE`, then both the mean function and variance funtions are drawn for ungrouped data, and the mean function only is drawn for grouped data, `smooth=FALSE` is neither.   
+[Example scatterplot()](https://www.princeton.edu/~otorres/Panel101R.pdf) • 
+[Example felm()](https://www.r-bloggers.com/linear-models-with-multiple-fixed-effects/) • 
+[RDocumentation](https://www.rdocumentation.org/packages/car/versions/3.0-2/topics/scatterplot) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Fixed_effects_model)
 
-- **random effects modell**: Basically, each unit (countries, participants, etc.) has its own baseline response, creating one intercept (beta_0) for each unit. These individual specific effects do not correlare with the ivs. This controls unobservable heterogeneity in the data. [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl); [Wikipedia](https://en.wikipedia.org/wiki/Random_effects_model)
+- **random effects modell**: `plm(dv ~ iv1, data = df, index = c("param1", "param2"), model = "random")`. The parameters in indem can be things such as years, countries, etc. Basically, each unit (countries, participants, etc.) has its own baseline response, creating one intercept (beta_0) for each unit. These individual specific effects do not correlare with the ivs. This controls unobservable heterogeneity in the data.    
+[Example](https://www.princeton.edu/~otorres/Panel101R.pdf) • 
+[RDocumentation](https://www.rdocumentation.org/packages/plm/versions/1.6-5/topics/plm) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Random_effects_model)
 
-- **mixed-effects model**: a.k.a. hierarchical model a.k.a. multilevel linear model `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood. [RDocumentation](https://www.rdocumentation.org/packages/lme4/versions/1.1-21/topics/lmer);  [Wikipedia](https://en.wikipedia.org/wiki/Mixed_model)
+- **mixed-effects model**: a.k.a. hierarchical model a.k.a. multilevel linear model `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood.   
+[Example](https://stats.idre.ucla.edu/r/dae/mixed-effects-logistic-regression/) • 
+[Test](http://rcompanion.org/handbook/G_03.html) • 
+[RDocumentation](https://www.rdocumentation.org/packages/lme4/versions/1.1-21/topics/lmer) • 
+[Wikipedia](https://en.wikipedia.org/wiki/Mixed_model)
 
 #### How to choose a regression?
 So, now that we have a list of regressions, how to choose the appropriate one for our data and analysis? Try to answer these questions:
 
 1. Are you doing a regression for the first time ever in your life?
    - Yes, and I don't know anything about statistics –––> **linear**
-   - No, I know 2+ things on the topic  :squirrel: ––> *go to 2)*
+   - No, I know 1+ things on the topic  :squirrel: ––> *go to 2)*
 
 2. What type of DV do you have?
    - Binary. ––> *go to 4)*
    - Categories. ––> *go to 6)*
    - Continuous. ––> *go to 8)*
    - Count data. ––> *go to 3)*
-   - Ordered. ––> *go to 5)*
+   - Ordinal. ––> *go to 5)*
    - Panel data. ––> *go to 7)*
 
 3. How many zeros/0 are present in your DV?  
@@ -227,6 +269,9 @@ Once we have performed our regression, we obviously need to understand the resul
 *coming up next!*
 - **R square**: Normal & adjusted
 - **F-statistic**:
+
+#### Logarithmic transformation
+You will see sometimes that some variables have been transformed with a **natural logarithm**. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in [this stacks exchange post](https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530). No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
 
 ### 3.2. Post-regression analysis
 #### Marginal effects
@@ -338,8 +383,6 @@ stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to s
           covariate.labels = c("(Intercept)", "Inflows", "\\textbf{Lijphart's Index}", "\\textbf{Ideal Point}", "Gov. Effectiveness", "Rule of Law", "Democracy", "(log) GDP per capita", "(log) Population", "NATO Country", "War", "TIFA", "FTA"),  # renaming rows
           type = "latex")  # technically unnecessary, as latex is default. it is useful to have it as one can quickly write "text" to see a quick print while setting the changes
 ```
-#### Logarithmic transformation
-You will see here above that some variables have been transformed with a **natural logarithm**. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in [this stacks exchange post](https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530). No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
 
 #### Maps 
 Another beautiful way to show data, if possible, is through a **map representation of the data**. The blog post right here is very descriptive and creates a really clean yet colourful map. I have used this one many times, as it is [my "go-to" world map guide](https://brennonborbon.wordpress.com/2017/12/16/creating-simple-world-maps-in-ggplot2/). I do however usually prefer to choose my own colours. Also, check out this website/book for other really good inspirations a guides on making beautiful maps in R: Geocomputation with R in the useful links. 
