@@ -7,14 +7,19 @@
 3. [Data Analysis](#3-Data-Analysis)
 4. [Visualizing Data](#4-Visualizing-Data)
 5. [Useful links](#5-Useful-links)
+6. [Updates](#6-Updates)
 
-*Sources: Most of the info below is based on or from my professor Chat Wacharamanotham's course "Quantitative Methods in Human-Computer Interaction" at the University of Zürich. With any mention of packages or functions, some text can be from their help documentation.*
+*Sources: Most of the info below is based on or from my professor Chat Wacharamanotham's course "Quantitative Methods in Human-Computer Interaction" at the University of Zurich. With any mention of packages or functions, some text can be from their help documentation.*
 
 ## 0. Blog Updates
-**Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
+**Next update**: *editing and preparing data for analysis + EFA/CFA + IRT/IRC/ICC + writing the package names next to their functions + updates described in part 6 + adding useful papers in some sections for further reading*
+
+**06.05**: This library has been extremely useful for many other classes actually! We learn all these different concepts in different classes, and sometimes it's difficult to piece it all together. I've been trying to go through my past stats/R classes to add it here to allow to have a master library that I can always consult whenever I'm doing a new research or just coding in R. I will most likely continue this library even after this class is over (minus the blog part) to use to combine all the stats knowledge I've acquired.
+So, for this update I will be adding some photos/illustrations of the different graphs and generally trying to make the library more attractive. Then, I already started to add descriptions of models end of last week and this weekend, and I will continue doing so today. This mainly includes the zero-inflated models and the fixed/random effects models.   
+**–>all sections: illustrations added + zero-inflated, fixed & random effects models**
 
 **03.05** - tiny updates, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. + small addition on the 4th on gridding. + on the 5th small addition mainly formatting.     
-**->section 3, 4, 5 updated: descriptions of regressions**
+**->section 3, 4 & 5 updated: descriptions of regressions**
 
 **29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code.   
 **->section 3 updated: descriptions of regressions**
@@ -82,6 +87,7 @@ Then, during another class this time, I was trying to figure out how to write ma
 
 
 ## 2. Importing & Reading Data
+#### Importing
 Here we are creating a dataset named "data" from the .csv file named "file". 
 ```
 data <- 
@@ -98,6 +104,9 @@ data <– read_excel(file.choose(), skip=5) %>%  # choose file on your computer
   setNames(., c(x1, x2, etc.))  # set column names
 ``` 
 Many different function with read.*type_of_file*() can be used. However, what I find most useful, when no mutation is necessary, is to simply go to the folder in the 'file' section in Rstudio, right click and import the data. 
+
+#### Editing & preparing data
+*Next update: numeric/character/factors/etc. classes, recoding variables, creating subsets/new datasets*
 
 ## 3. Data Analysis 
 Here is a basic regression with a linear model and two variables. The independent variables (iv1 & iv2) are the regressors a.k.a. predictors, and the dependent variable (dv) is the response variable, a.k.a. the outcome variable. The * sign does both the interaction (:) and addition (+). The main effect is the mean differences mong the levels of one factore. The interaction effect occurs when the mean differences among conditions differ from what predecited from overall main effect (def. from class). 
@@ -220,6 +229,11 @@ results_anova <- analyze(anova_reg)
 print(results_anova)  # APA text output
 summary(results_anova)  # summary table
 ``` 
+#### Factors analysis
+*next update: EFA, CFA, Cronbach's alpha, eigenvalues, SEM*
+
+#### Item response theory
+*next update: IRT models, IRC, ICC*
 
 ## 4. Visualizing Data
 #### types of graphs
@@ -327,3 +341,7 @@ Here is a nice [blog post](https://drsimonj.svbtle.com/visualising-residuals) ab
 - [RStudio shorcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts): if you want to get quite efficient in R, don't hesitate to check out the shortcuts of actions you perform often. A little knowledge goes a long way here, you can save lots of time!
 - [Stargazer cheatsheet](https://www.jakeruss.com/cheatsheets/stargazer/): cheat*page* on all of the possibilities with stargazer. Any question you have has its answer here. 
 - [Tidyverse style guide](https://style.tidyverse.org/index.html): Proper grammar and spelling is important in all languages, including programming languages such as R! It's good to learn the basics to have beautifully written code. 
+
+## Updates
+1.0:
+
