@@ -6,6 +6,8 @@ This is an R code library mixed in with some statistics knowledge, aimed at stud
 
 ## Index
 1. [Useful Packages](#1-Useful-Packages)
+   1.1. [List of packages](#11-List-of-packages)
+   1.2. [Basic manipulations](#12-Basic-manipulations)
 2. [Importing & Reading Data](#2-Importing--Reading-Data)  
    2.1. [Importing data](#21-Importing-data)   
    2.2. [Editing & preparing data](#22-Editing--preparing-data)   
@@ -21,9 +23,9 @@ This is an R code library mixed in with some statistics knowledge, aimed at stud
 ## 0. Blog Updates
 **Next update**: *editing and preparing data for analysis + EFA/CFA + IRT/IRC/ICC + writing the package names next to their functions + adding useful papers in some sections for further reading + adding some photos/illustrations of the different graphs and generally trying to make the library more attractive.*
 
-**06.05**: This library has been extremely useful for many other classes actually! We learn all these different concepts in different classes, and sometimes it's difficult to piece it all together. I've been trying to go through my past stats/R classes to add it here to allow to have a master library that I can always consult whenever I'm doing a new research or just coding in R. I will most likely continue this library even after this class is over (minus the blog part) to use to combine all the stats knowledge I've acquired.
- Then, I already started to add descriptions of models end of last week and this weekend, and I will continue doing so today. This mainly includes the zero-inflated models and the fixed/random effects models. Added a small preface and instructions on how to leave comments/feedback. Also made the organisation of the library clearer with sub-sections.    
-**–>section 3 & preface: zero-inflated, fixed & random effects models**
+**06.05**: This library has been extremely useful for many other classes actually! We learn all these different concepts in different classes, and sometimes it's difficult to piece it all together. I've been trying to go through my past stats/R classes to add it here to allow to have a master library that I can always consult whenever I'm doing a new research or just coding in R. I will most likely continue this library even after this class is over (minus the blog part) to use to combine all the stats knowledge I've acquired. However, I will move it to the wiki section, as it is more comfortable to work there (and it has a spell check). 
+Then, I already started to add descriptions of models end of last week and this weekend, and I will continue doing so today. This mainly includes the zero-inflated models and the fixed/random effects models. Added a small preface and instructions on how to leave comments/feedback. Also made the organisation of the library clearer with sub-sections and added section 1.2 on the basic manipulations of packages.     
+**–>section 1, 3 & preface: zero-inflated, fixed & random effects models**
 
 **03.05** - tiny updates, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. + small addition on the 4th on gridding. + on the 5th small addition mainly formatting.     
 **->section 3, 4 & 5 updated: descriptions of regressions**
@@ -56,6 +58,8 @@ Then, during another class this time, I was trying to figure out how to write ma
 **–>Creation of the code library with sections 1, 2, 3 and 4.**    
    
 ## 1. Useful Packages
+### 1.1. List of packages
+You can always check out the R package leaderboard [here](https://www.rdocumentation.org/trends) to see the most downloaded, most recently updated and newest packages.  
 
 #### Analysis & Regressions
 - `ARTool`: The Aligned Rank Transform for nonparametric factorial ANOVAs. 
@@ -80,14 +84,14 @@ Then, during another class this time, I was trying to figure out how to write ma
 [Rdocumentation](https://www.rdocumentation.org/packages/nnet/versions/7.3-12)
 - `nortest`: Five omnibus tests for testing the composite hypothesis of normality. 
 [Rdocumentation](https://www.rdocumentation.org/packages/nortest/versions/1.0-4)
-- `pscl`: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing highest density regions; maximum likelihood estimation of zero-inflated and hurdle models for count data; goodness-of-fit measures for GLMs; data sets used in writing	and teaching at the Political Science Computational Laboratory; seats-votes curves. [
-Rdocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2)
+- `pscl`: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing highest density regions; maximum likelihood estimation of zero-inflated and hurdle models for count data; goodness-of-fit measures for GLMs; data sets used in writing	and teaching at the Political Science Computational Laboratory; seats-votes curves. 
+[Rdocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2)
 - `psycho`: The main goal of the psycho package is to provide tools for psychologists, neuropsychologists and neuroscientists, to facilitate and speed up the time spent on data analysis. 
 [Rdocumentation](https://www.rdocumentation.org/packages/psycho/versions/0.4.9)
 
 #### Development & General use
 - `devtools`: Tools to make developing R packages easier. 
-[Rdocumentation](https://www.rdocumentation.org/packages/devtools/versions/2.0.2)
+[Rdocumentation](https://www.rdocumentation.org/packages/devtools/versions/2.0.2) • section 3.2
 - `import`: This is an alternative mechanism for importing objects from packages. The syntax allows for importing multiple objects from a package with a single command in an expressive way. 
 [Rdocumentation](https://www.rdocumentation.org/packages/import/versions/1.1.0)
 - `knitr`: Provides a general-purpose tool for dynamic report generation in R using Literate Programming techniques. 
@@ -123,7 +127,11 @@ Rdocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2)
 [Rdocumentation](https://www.rdocumentation.org/packages/tidyverse/versions/1.2.1)    
 
 \* This is the holy grail of packages  
-*next update: basic manipulations of packages, :, ::*
+
+### 1.2. Basic manipulations
+to install a package use the `ìnstall.packages("package")` function with whichever package you would like to install as the argument. If you have multiple packages you need to install at once, just use the combine `c("pack1", "pack2")` function to select all of them. To access the description of the package simply use the `packageDescription("package")` function. If you need to download a package from a specific source (not CRAN), you may want to used the `devtools` package to a specific install function, such as `install_github()`. To uninstall a package use the function `remove.package("package")`. You can update all your packages by using the function `update.packages()`. If you're working with a group and you're not sure if everyone has installed all the packages, use the `require("package")` function to return an error if the user does not have it. [Read more on library() vs require()](https://yihui.name/en/2014/07/library-vs-require/)
+
+Once a package has been installed, you can load it by using the `library("package")` function. Once the package is loaded, you can use all of its functions by normally calling them `function()`. The opposite of the `library()` function, to unload a package, is the `detach()`function. If you already have many packages loaded and you know you will only use one function from that package, you can access a function without loading the package by using a double colon as such `package::function()`. If you do not remember the function name by heart, you can always press TAB once you have written `package::` and the list of all functions will appear. If you have two packages loaded that have two different function but with the same name, you will need to use a single colon to specify which package you need it from `package:function()`. 
 
 ## 2. Importing & Reading Data
 ### 2.1. Importing data
@@ -297,9 +305,6 @@ Once we have performed our regression, we obviously need to understand the resul
 *coming up next!*
 - **R square**: Normal & adjusted
 - **F-statistic**:
-
-#### Logarithmic transformation
-You will see sometimes that some variables have been transformed with a **natural logarithm**. Before jumping the gun and doing a superfluous log, please read the amazing words that have been written in [this stacks exchange post](https://stats.stackexchange.com/questions/298/in-linear-regression-when-is-it-appropriate-to-use-the-log-of-an-independent-va/3530#3530). No wiser words have been spoken about log transformations of variables, so read before doing anything that will drastically change your results!
 
 ### 3.2. Post-regression analysis
 #### Marginal effects
