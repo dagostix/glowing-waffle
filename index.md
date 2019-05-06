@@ -1,22 +1,29 @@
 # The R code library
-## Stats 101 
 
-**Index**
-1. [Useful Packages](#1-Useful-Packages)
-2. [Importing & Reading Data](#2-Importing--Reading-Data)
-3. [Data Analysis](#3-Data-Analysis)
-4. [Visualizing Data](#4-Visualizing-Data)
-5. [Useful links](#5-Useful-links)
-6. [Updates](#6-Updates)
+This is an R code library mixed in with some statistics knowledge, aimed at students doing their own research, but mostly for personal use. I've mixed most contents from my classes + some personal research to get a broader overview of the matters at hand. If you have any comments/feedback, just look at the [history of the index.md file](https://github.com/dagostix/glowing-waffle/commits/master/index.md) and comment on the latest update. I will try to add recommendations that I find useful in the following updates. You can always find the content of the upcoming updates in the blog section. 
 
 *Sources: Most of the info below is based on or from my professor Chat Wacharamanotham's course "Quantitative Methods in Human-Computer Interaction" at the University of Zurich. With any mention of packages or functions, some text can be from their help documentation.*
 
+**Index**
+1. [Useful Packages](#1-Useful-Packages)
+2. [Importing & Reading Data](#2-Importing--Reading-Data)  
+   2.1. [Importing data](#21-Importing-data)   
+   2.2. [Editing & preparing data](#22-Editing--preparing-data)   
+3. [Data Analysis](#3-Data-Analysis)   
+   3.1. [Regression models](#31-Regression-models)  
+   3.2. [Post-regression analysis](#32-Postregression-analysis)  
+   3.3. [Other analyses](#33-Other-analyses)  
+4. [Visualizing Data](#4-Visualizing-Data)   
+   4.1. [GGplot](#41-GGplot)  
+   4.2. [Not GGplot](#42-Not-GGplot)  
+5. [Useful links](#5-Useful-links)
+
 ## 0. Blog Updates
-**Next update**: *editing and preparing data for analysis + EFA/CFA + IRT/IRC/ICC + writing the package names next to their functions + updates described in part 6 + adding useful papers in some sections for further reading*
+**Next update**: *editing and preparing data for analysis + EFA/CFA + IRT/IRC/ICC + writing the package names next to their functions + adding useful papers in some sections for further reading + adding some photos/illustrations of the different graphs and generally trying to make the library more attractive.*
 
 **06.05**: This library has been extremely useful for many other classes actually! We learn all these different concepts in different classes, and sometimes it's difficult to piece it all together. I've been trying to go through my past stats/R classes to add it here to allow to have a master library that I can always consult whenever I'm doing a new research or just coding in R. I will most likely continue this library even after this class is over (minus the blog part) to use to combine all the stats knowledge I've acquired.
-So, for this update I will be adding some photos/illustrations of the different graphs and generally trying to make the library more attractive. Then, I already started to add descriptions of models end of last week and this weekend, and I will continue doing so today. This mainly includes the zero-inflated models and the fixed/random effects models.   
-**–>all sections: illustrations added + zero-inflated, fixed & random effects models**
+ Then, I already started to add descriptions of models end of last week and this weekend, and I will continue doing so today. This mainly includes the zero-inflated models and the fixed/random effects models. Added a small preface and instructions on how to leave comments/feedback. Also made the organisation of the library clearer with sub-sections.    
+**–>section 3 & preface: zero-inflated, fixed & random effects models**
 
 **03.05** - tiny updates, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. + small addition on the 4th on gridding. + on the 5th small addition mainly formatting.     
 **->section 3, 4 & 5 updated: descriptions of regressions**
@@ -53,6 +60,7 @@ Then, during another class this time, I was trying to figure out how to write ma
 #### Analysis & Regressions
 - `ARTool`: The Aligned Rank Transform for nonparametric factorial ANOVAs.
 - `car`: Companion to Applied Regression.
+- `lavaan`: *next update*
 - `lawstat`: Statistical tests widely utilized in biostatistics, public policy, and law. Along with the well-known tests for equality of means and variances, randomness, measures of relative variability etc, the package contains new robust tests of symmetry, omnibus and directional tests of normality, and their graphical counterparts such as Robust QQ plot; a robust trend tests for variances etc.
 - `lme4`: Fit linear and generalized linear mixed-effects models. The models and their components are represented using S4 classes and methods. 
 - `lmerTest`: Provides p-values in type I, II or III anova and summary tables for lmer model fits (cf. lme4) via Satterthwaite's degrees of freedom method.
@@ -61,6 +69,7 @@ Then, during another class this time, I was trying to figure out how to write ma
 - `multcomp`: Simultaneous tests and confidence intervals for general linear hypotheses in parametric models, including linear, generalized linear, linear mixed effects, and survival models.
 - `nnet`: Software for feed-forward neural networks with a single hidden layer, and for multinomial log-linear models.
 - `nortest`: Five omnibus tests for testing the composite hypothesis of normality.
+- `pscl`: *next update*
 - `psycho`: The main goal of the psycho package is to provide tools for psychologists, neuropsychologists and neuroscientists, to facilitate and speed up the time spent on data analysis.
 
 #### Development & General use
@@ -83,11 +92,13 @@ Then, during another class this time, I was trying to figure out how to write ma
 - `broom`: Summarizes key information about statistical objects in tidy tibbles.
 - `lubridate`: Functions to work with date-times and time-spans: fast and user friendly parsing of date-time data, extraction and updating of components of a date-time (years, months, days, hours, minutes, and seconds), algebraic manipulation on date-time and time-span objects. 
 - `modelr`: Functions for modelling that help you seamlessly integrate modelling into a pipeline of data manipulation and visualisation.
-- `tidyverse`: The 'tidyverse' is a set of packages that work in harmony because they share common data representations and 'API' design.
+- `tidyverse`: The 'tidyverse' is a set of packages that work in harmony because they share common data representations and 'API' design.\*   
 
+\* This is the holy grail of packages
+*next update: basic manipulations of packages, :, ::*
 
 ## 2. Importing & Reading Data
-#### Importing
+### 2.1. Importing data
 Here we are creating a dataset named "data" from the .csv file named "file". 
 ```
 data <- 
@@ -105,7 +116,7 @@ data <– read_excel(file.choose(), skip=5) %>%  # choose file on your computer
 ``` 
 Many different function with read.*type_of_file*() can be used. However, what I find most useful, when no mutation is necessary, is to simply go to the folder in the 'file' section in Rstudio, right click and import the data. 
 
-#### Editing & preparing data
+### 2.2. Editing & preparing data
 *Next update: numeric/character/factors/etc. classes, recoding variables, creating subsets/new datasets*
 
 ## 3. Data Analysis 
@@ -114,33 +125,33 @@ Here is a basic regression with a linear model and two variables. The independen
 reg <- lm(dv ~ iv1 * iv2, data = data)
 ```
 
-#### Different regression models
+### 3.1. Regression models
 Here are some different regression functions you can use, depending on the type of data you have. Also linked wikipedia articles which explain in detail each model. Don't hate on wikipedia.
-- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above), can be used as a simple of multiple linear regression depending on the number of IVs used in the model. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance. [Read more](https://en.wikipedia.org/wiki/Linear_regression)
+- **linear model**: `lm(dv ~ iv1 + iv2, data = df)` (as explained above), can be used as a simple of multiple linear regression depending on the number of IVs used in the model. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance. [RDocumentation](https://www.rdocumentation.org/packages/stats/versions/3.5.3/topics/lm); [Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
 
-- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))` This is also a glm model, similar to the logit with a binary DV, but assumes a normal distribution of errors instead. It estimates the odds of an observation happening depending on the characteristics implented in the model. –> "**prob**ability & un**it**" [Read more](https://en.wikipedia.org/wiki/Probit_model)
+- **probit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = probit))` This is also a glm model, similar to the logit with a binary DV, but assumes a normal distribution of errors instead. It estimates the odds of an observation happening depending on the characteristics implented in the model. –> "**prob**ability & un**it**". [RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm); [Wikipedia](https://en.wikipedia.org/wiki/Probit_model)
 
-- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))` glm is used to fit generalized linear models, specified by giving a symbolic description of the linear predictor and a description of the error distribution. This is a logistic model specified by the family argument, generally used for dependent variables that are binary. It assumes a standard logistic distribution of errors, estimating the probabilities in log odds. –> "**log**istic & un**it**" [Read more](https://en.wikipedia.org/wiki/Logistic_regression)
+- **logit model**: `glm(dv ~ iv1 + iv2, data = df, family = binomial(link = logit))` glm is used to fit generalized linear models, specified by giving a symbolic description of the linear predictor and a description of the error distribution. This is a logistic model specified by the family argument, generally used for dependent variables that are binary. It assumes a standard logistic distribution of errors, estimating the probabilities in log odds. –> "**log**istic & un**it**". [RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm); [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)
 
-- **ordered probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named. The same can be done with a logit model, by simply changing the method. Here "Hess" is set to `TRUE` as we want the information matrix to get standard errors. The "ordered" part of the model implies that our DV here is not binary anymore (as a probit/logit should be), and could be instead a Likert-scale, grades, etc. [Read more on probit](https://en.wikipedia.org/wiki/Ordered_probit) [or logit](https://en.wikipedia.org/wiki/Ordered_logit)
+- **ordered logit/probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named. The same can be done with a logit model, by simply changing the method to `"logit"`. Here "Hess" is set to `TRUE` as we want the information matrix to get standard errors. The "ordered" part of the model implies that our DV here is not binary anymore (as a probit/logit should be), and could be instead a Likert-scale, grades, etc.[RDocumentation](https://www.rdocumentation.org/packages/tram/versions/0.2-5/topics/Polr); [Wikipedia on probit](https://en.wikipedia.org/wiki/Ordered_probit); [Wikipedia on logit](https://en.wikipedia.org/wiki/Ordered_logit)
 
-- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories. [Read more](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
+- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories.[RDocumentation](https://www.rdocumentation.org/packages/mlogit/versions/0.4-1/topics/mlogit); [Wikipedia](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
 
-- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")` So, we find another form of glm, this time used for count data (number of deaths, population, events etc.) or contigency tables (frequency/count in table form). It assumes that the DV has a [poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution), and that the counts are independent of each other, meaning one count will not lead directly to another. It also assumes that the variance and mean are equal. [Read more](https://en.wikipedia.org/wiki/Poisson_regression)
+- **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")` So, we find another form of glm, this time used for count data (number of deaths, population, events etc.) or contigency tables (frequency/count in table form). It assumes that the DV has a [poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution), and that the counts are independent of each other, meaning one count will not lead directly to another. It also assumes that the variance and mean are equal.[RDocumentation](https://www.rdocumentation.org/packages/rms/versions/5.1-2/topics/Glm); [Wikipedia](https://en.wikipedia.org/wiki/Poisson_regression)
 
-- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))` A modification of the system function glm() to include estimation of the additional parameter, theta, for a Negative Binomial generalized linear model. Also used for count data, it is a mixture of the Poisson model, except does not have the variance-mean assumption, with a gamma distribution. However, different distributions are related as can be [read here](https://en.wikipedia.org/wiki/Negative_binomial_distribution#Related_distributions). [Read more on the NB distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution)
+- **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))` A modification of the system function glm() to include estimation of the additional parameter, theta, for a Negative Binomial generalized linear model. Also used for count data, it is a mixture of the Poisson model, except does not have the variance-mean assumption, with a gamma distribution. However, different distributions are related as can be [read here](https://en.wikipedia.org/wiki/Negative_binomial_distribution#Related_distributions). [RDocumentation](https://www.rdocumentation.org/packages/MASS/versions/7.3-51.4/topics/glm.nb); [Wikipedia](https://en.wikipedia.org/wiki/Negative_binomial_distribution)
 
-- **zero-inflated Poisson model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df)` a function from the `pscl` package. Here is a [great description](https://stats.idre.ucla.edu/r/dae/zip/) of how to perform the model. [Read more](https://en.wikipedia.org/wiki/Zero-inflated_model)
+- **zero-inflated Poisson model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df)` a function from the `pscl` package. This is for when you have a large proportion of zeros in your data that will cause a skew. Here is a [great description](https://stats.idre.ucla.edu/r/dae/zip/) of how to perform the model. [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl); [Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
 
-- **zero-inflated negative binomial model**: including both Poisson and NB. [Read more](https://en.wikipedia.org/wiki/Zero-inflated_model)
+- **zero-inflated negative binomial model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df, dist = "negbin", EM = TRUE)` from the `pscl` package. This is the same function as the ZI Poisson, with a different distance. Here is a [great description](https://stats.idre.ucla.edu/r/dae/zinb/) of how to perform the model. [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl); [Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
 
-- **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")` [Read more](https://en.wikipedia.org/wiki/Panel_analysis)
+- **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")`. Linear models for panel data estimated using the `lm` function on transformed data. [RDocumentation](https://www.rdocumentation.org/packages/plm/versions/1.6-5/topics/plm); [Wikipedia](https://en.wikipedia.org/wiki/Panel_analysis)
 
-- **fixed effects model**: `scatterplot(dv ~ df$iv1|df$parameter, smooth=FALSE)` Each parameter (policy, treatment, etc.) has its own baseline response and these effects are correlated with the ivs. This controls unobservable heterogeneity in the data.  If `smooth=TRUE`, then both the mean function and variance funtions are drawn for ungrouped data, and the mean function only is drawn for grouped data, `smooth=FALSE` is neither. [Read more](https://en.wikipedia.org/wiki/Fixed_effects_model)
+- **fixed effects model**: `scatterplot(dv ~ df$iv1|df$parameter, smooth=FALSE)` Each parameter (policy, treatment, etc.) has its own baseline response and these effects are correlated with the ivs. This controls unobservable heterogeneity in the data.  If `smooth=TRUE`, then both the mean function and variance funtions are drawn for ungrouped data, and the mean function only is drawn for grouped data, `smooth=FALSE` is neither. [RDocumentation](https://www.rdocumentation.org/packages/car/versions/3.0-2/topics/scatterplot); [Wikipedia](https://en.wikipedia.org/wiki/Fixed_effects_model)
 
-- **random effects modell**: Basically, each unit (countries, participants, etc.) has its own baseline response, creating one intercept (beta_0) for each unit. These individual specific effects do not correlare with the ivs. This controls unobservable heterogeneity in the data. [Read more](https://en.wikipedia.org/wiki/Random_effects_model)
+- **random effects modell**: Basically, each unit (countries, participants, etc.) has its own baseline response, creating one intercept (beta_0) for each unit. These individual specific effects do not correlare with the ivs. This controls unobservable heterogeneity in the data. [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl); [Wikipedia](https://en.wikipedia.org/wiki/Random_effects_model)
 
-- **mixed-effects model**: a.k.a. hierarchical model a.k.a. multilevel linear model `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood [Read more](https://en.wikipedia.org/wiki/Mixed_model)
+- **mixed-effects model**: a.k.a. hierarchical model a.k.a. multilevel linear model `lmer(dv ~ 1 + (1 | iv1), data = df, REML = F)`. Fit a linear mixed-effects model (LMM) to data, via REML or maximum likelihood. REML reference to Restricted Expected Maximium Likelihood. [RDocumentation](https://www.rdocumentation.org/packages/lme4/versions/1.1-21/topics/lmer);  [Wikipedia](https://en.wikipedia.org/wiki/Mixed_model)
 
 #### How to choose a regression?
 So, now that we have a list of regressions, how to choose the appropriate one for our data and analysis? Try to answer these questions:
@@ -158,6 +169,9 @@ So, now that we have a list of regressions, how to choose the appropriate one fo
    - Panel data. ––> *go to 7)*
 
 3. How many zeros/0 are present in your DV?  
+   - If zero is impossible:
+     - If the variance is equal to the mean ––––> **Zero-truncated Poisson**
+     - If overdistribution is present ––––> **Zero-truncated negative binomial**
    - If there are no or a small proportion of zeros present:
      - If the variance is equal to the mean ––––> **Poisson**
      - If overdistribution is present, the variance is superior to the mean ––––> **Negative binomial**
@@ -192,7 +206,7 @@ So, now that we have a list of regressions, how to choose the appropriate one fo
     - No, then I'll use a non-linear regression:
       - good luck :) 
 
-* the [Durbin–Wu–Hausman test](https://en.wikipedia.org/wiki/Durbin%E2%80%93Wu%E2%80%93Hausman_test) can be used to determine if fixed or random effects is better. Also, if the difference remains unclear to you, check out this [post](https://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode).
+\* the [Durbin–Wu–Hausman test](https://en.wikipedia.org/wiki/Durbin%E2%80%93Wu%E2%80%93Hausman_test) can be used to determine if fixed or random effects is better. Also, if the difference remains unclear to you, check out this [post](https://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode).
 
 You can always check the residuals to see if any patterns/heteroskedasticity stand out or if they're random and all is well. Also, with the probit and logits, they give quite similar results and there are many different reasons to use one rather than the other. Some really good explanations can be found [here](https://stats.stackexchange.com/questions/20523/difference-between-logit-and-probit-models). Thank you [Jim](https://statisticsbyjim.com/regression/choosing-regression-analysis/) for your endless advice on statistics.
 
@@ -214,6 +228,7 @@ Once we have performed our regression, we obviously need to understand the resul
 - **R square**: Normal & adjusted
 - **F-statistic**:
 
+### 3.2. Post-regression analysis
 #### Marginal effects
 This part is often forgotten during the data and model analysis. [This page](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.htm) explains well how to get margianl effects in R.
 
@@ -229,6 +244,8 @@ results_anova <- analyze(anova_reg)
 print(results_anova)  # APA text output
 summary(results_anova)  # summary table
 ``` 
+
+### 3.3. Other analyses
 #### Factors analysis
 *next update: EFA, CFA, Cronbach's alpha, eigenvalues, SEM*
 
@@ -236,6 +253,7 @@ summary(results_anova)  # summary table
 *next update: IRT models, IRC, ICC*
 
 ## 4. Visualizing Data
+### 4.1. GGplot
 #### types of graphs
 There are many different types of plots, here are a few:
 - **Beeswarm**: (+) Shows all data points for clear density. (-) Overwhelming for large datasets. Harder to read.
@@ -278,17 +296,6 @@ ggplot(data, aes(x=device, y=time, fill = vision)) +
 #### Special variables
 When you're setting up your plot aesthetics, sometimes you may wish to use a variable that is not directly linked to your dataset. The first special variable is `..count..`, which is the equivalent of `stat(count)` and tallies the number of occurences. Then we have the `..density..`variable which \* *drumroll* \* will show the density estimates. I tried finding other ones, but I was not successful in doing so. All I managed to find are unanswered stack overflow questions or badly answered ones, so if anyone knows anything more, I am here. Tell me please. 
 
-#### Facetting
-When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
-
-If you're not using ggplot or any other grob, like a simple `plot()` function, the gridExtra and other gridding function probably will not work. So you can use the `par()`function. You simply need to specify the number of rows and columns you wish to have and write the plots below. 
-```
-par(mfrow=c(2,2))
-plot(plot1)
-plot(plot2)
-plot(plot3)
-```
-
 #### Position dodge
 The position dodge below ensures no overlaps on the data points in the plot, which will be included in the "position" argument. 
 ```
@@ -300,7 +307,20 @@ ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
  expand_limits(y = 0)
 ```
 
-#### Descriptive statistics & regression tables
+#### Facetting
+When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
+
+### 4.2. Not GGplot
+#### facetting
+If you're not using ggplot or any other grob, like a simple `plot()` function, the gridExtra and other gridding function probably will not work. So you can use the `par()`function. You simply need to specify the number of rows and columns you wish to have and write the plots below. 
+```
+par(mfrow=c(1,3))
+plot(plot1)
+plot(plot2)
+plot(plot3)
+```
+
+### Descriptive statistics & regression tables
 Now that I have extensively shown different plot types, I think it is useful to show other types of data visualisation, without GGplot. If I ever need to present regression results or dataset statistics, I will always go for `Stargazer`tables, although `textreg` is also good. Below you can find a regression table I had used: 
 ```
 stargazer(list(reg1, reg2, reg3, reg5),  #listing the different regressions to show side by side
@@ -341,7 +361,4 @@ Here is a nice [blog post](https://drsimonj.svbtle.com/visualising-residuals) ab
 - [RStudio shorcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts): if you want to get quite efficient in R, don't hesitate to check out the shortcuts of actions you perform often. A little knowledge goes a long way here, you can save lots of time!
 - [Stargazer cheatsheet](https://www.jakeruss.com/cheatsheets/stargazer/): cheat*page* on all of the possibilities with stargazer. Any question you have has its answer here. 
 - [Tidyverse style guide](https://style.tidyverse.org/index.html): Proper grammar and spelling is important in all languages, including programming languages such as R! It's good to learn the basics to have beautifully written code. 
-
-## Updates
-1.0:
-
+- [UCLA data analysis](https://stats.idre.ucla.edu/other/dae/): UCLA website explaining how to perform data analyses with different languages (R, Stata, etc.)
