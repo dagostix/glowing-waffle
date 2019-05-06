@@ -14,8 +14,8 @@ This is an R code library mixed in with some statistics knowledge, aimed at stud
    3.2. [Post-regression analysis](#32-Postregression-analysis)  
    3.3. [Other analyses](#33-Other-analyses)  
 4. [Visualizing Data](#4-Visualizing-Data)   
-   4.1. [GGplot](#41-GGplot)  
-   4.2. [Not GGplot](#42-Not-GGplot)  
+   4.1. [ggplot](#41-ggplot)  
+   4.2. [Not ggplot](#42-Not-ggplot)  
 5. [Useful links](#5-Useful-links)
 
 ## 0. Blog Updates
@@ -58,43 +58,71 @@ Then, during another class this time, I was trying to figure out how to write ma
 ## 1. Useful Packages
 
 #### Analysis & Regressions
-- `ARTool`: The Aligned Rank Transform for nonparametric factorial ANOVAs.
-- `car`: Companion to Applied Regression.
-- `lavaan`: *next update*
-- `lawstat`: Statistical tests widely utilized in biostatistics, public policy, and law. Along with the well-known tests for equality of means and variances, randomness, measures of relative variability etc, the package contains new robust tests of symmetry, omnibus and directional tests of normality, and their graphical counterparts such as Robust QQ plot; a robust trend tests for variances etc.
+- `ARTool`: The Aligned Rank Transform for nonparametric factorial ANOVAs. 
+[RDocumentation](https://www.rdocumentation.org/packages/ARTool/versions/0.10.6)
+- `car`: Companion to Applied Regression. 
+[RDocumentation](https://www.rdocumentation.org/packages/car/versions/3.0-2)
+- `lavaan`: Fit a variety of latent variable models, including confirmatory factor analysis, structural equation modeling and latent growth curve models. 
+[Rdocumentation](https://www.rdocumentation.org/packages/lavaan/versions/0.6-3)
+- `lawstat`: Statistical tests widely utilized in biostatistics, public policy, and law. Along with the well-known tests for equality of means and variances, randomness, measures of relative variability etc, the package contains new robust tests of symmetry, omnibus and directional tests of normality, and their graphical counterparts such as Robust QQ plot; a robust trend tests for variances etc. 
+[Rdocumentation](https://www.rdocumentation.org/packages/lawstat/versions/3.3)
 - `lme4`: Fit linear and generalized linear mixed-effects models. The models and their components are represented using S4 classes and methods. 
-- `lmerTest`: Provides p-values in type I, II or III anova and summary tables for lmer model fits (cf. lme4) via Satterthwaite's degrees of freedom method.
-- `lsmeans`: Obtain least-squares means for linear, generalized linear, and mixed models. Compute contrasts or linear functions of least-squares means, and comparisons of slopes. Plots and compact letter displays.
-- `MASS`: Functions and datasets to support Venables and Ripley, "Modern Applied Statistics with S".
-- `multcomp`: Simultaneous tests and confidence intervals for general linear hypotheses in parametric models, including linear, generalized linear, linear mixed effects, and survival models.
-- `nnet`: Software for feed-forward neural networks with a single hidden layer, and for multinomial log-linear models.
-- `nortest`: Five omnibus tests for testing the composite hypothesis of normality.
-- `pscl`: *next update*
-- `psycho`: The main goal of the psycho package is to provide tools for psychologists, neuropsychologists and neuroscientists, to facilitate and speed up the time spent on data analysis.
+[Rdocumentation](https://www.rdocumentation.org/packages/lme4/versions/1.1-21)
+- `lmerTest`: Provides p-values in type I, II or III anova and summary tables for lmer model fits (cf. lme4) via Satterthwaite's degrees of freedom method. 
+[Rdocumentation](https://www.rdocumentation.org/packages/lmerTest/versions/3.1-0)
+- `lsmeans`: Obtain least-squares means for linear, generalized linear, and mixed models. Compute contrasts or linear functions of least-squares means, and comparisons of slopes. Plots and compact letter displays. 
+[Rdocumentation](https://www.rdocumentation.org/packages/lsmeans/versions/2.30-0)
+- `MASS`: Functions and datasets to support Venables and Ripley, "Modern Applied Statistics with S". 
+[Rdocumentation](https://www.rdocumentation.org/packages/MASS/versions/7.3-51.4)
+- `multcomp`: Simultaneous tests and confidence intervals for general linear hypotheses in parametric models, including linear, generalized linear, linear mixed effects, and survival models. 
+[Rdocumentation](https://www.rdocumentation.org/packages/multcomp/versions/1.4-10)
+- `nnet`: Software for feed-forward neural networks with a single hidden layer, and for multinomial log-linear models. 
+[Rdocumentation](https://www.rdocumentation.org/packages/nnet/versions/7.3-12)
+- `nortest`: Five omnibus tests for testing the composite hypothesis of normality. 
+[Rdocumentation](https://www.rdocumentation.org/packages/nortest/versions/1.0-4)
+- `pscl`: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing highest density regions; maximum likelihood estimation of zero-inflated and hurdle models for count data; goodness-of-fit measures for GLMs; data sets used in writing	and teaching at the Political Science Computational Laboratory; seats-votes curves. [
+Rdocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2)
+- `psycho`: The main goal of the psycho package is to provide tools for psychologists, neuropsychologists and neuroscientists, to facilitate and speed up the time spent on data analysis. 
+[Rdocumentation](https://www.rdocumentation.org/packages/psycho/versions/0.4.9)
 
 #### Development & General use
 - `devtools`: Tools to make developing R packages easier. 
-- `import`: This is an alternative mechanism for importing objects from packages. The syntax allows for importing multiple objects from a package with a single command in an expressive way.
-- `knitr`: Provides a general-purpose tool for dynamic report generation in R using Literate Programming techniques.
-- `markdown`: Provides R bindings to the 'Sundown' 'Markdown' rendering library.
+[Rdocumentation](https://www.rdocumentation.org/packages/devtools/versions/2.0.2)
+- `import`: This is an alternative mechanism for importing objects from packages. The syntax allows for importing multiple objects from a package with a single command in an expressive way. 
+[Rdocumentation](https://www.rdocumentation.org/packages/import/versions/1.1.0)
+- `knitr`: Provides a general-purpose tool for dynamic report generation in R using Literate Programming techniques. 
+[Rdocumentation](https://www.rdocumentation.org/packages/knitr/versions/1.22)
+- `markdown`: Provides R bindings to the 'Sundown' 'Markdown' rendering library. 
+[Rdocumentation](https://www.rdocumentation.org/packages/markdown/versions/0.9)
 
 #### Plots & Visual aids 
-- `cowplot`: Streamlined plot theme and plot annotations for 'ggplot2'.
-- `GGally`: It extends 'ggplot2' by adding several functions to reduce the complexity of combining geometric objects with transformed data.
-- `ggbeeswarm`: Provides two methods of plotting categorical scatter plots such that the arrangement of points within a category reflects the density of data at that region, and avoids over-plotting.
-- `ggvis`: An implementation of an interactive grammar of graphics, taking the best parts of 'ggplot2', combining them with the reactive framework of 'shiny' and drawing web graphics using 'vega'.
-- `shiny`: Makes it incredibly easy to build interactive web applications with R. Automatic "reactive" binding between inputs and outputs and extensive prebuilt widgets make it possible to build beautiful, responsive, and powerful applications with minimal effort.
-- `shinydashboard`: Create dashboards with 'Shiny'. This package provides a theme on top of 'Shiny', making it easy to create attractive dashboards.
+- `cowplot`: Streamlined plot theme and plot annotations for 'ggplot2'. 
+[Rdocumentation](https://www.rdocumentation.org/packages/cowplot/versions/0.9.4)
+- `GGally`: It extends 'ggplot2' by adding several functions to reduce the complexity of combining geometric objects with transformed data. 
+[Rdocumentation](https://www.rdocumentation.org/packages/GGally/versions/1.4.0)
+- `ggbeeswarm`: Provides two methods of plotting categorical scatter plots such that the arrangement of points within a category reflects the density of data at that region, and avoids over-plotting. 
+[Rdocumentation](https://www.rdocumentation.org/packages/ggbeeswarm/versions/0.5.3)
+- `ggvis`: An implementation of an interactive grammar of graphics, taking the best parts of 'ggplot2', combining them with the reactive framework of 'shiny' and drawing web graphics using 'vega'. 
+[Rdocumentation](https://www.rdocumentation.org/packages/ggvis/versions/0.4.4)
+- `shiny`: Makes it incredibly easy to build interactive web applications with R. Automatic "reactive" binding between inputs and outputs and extensive prebuilt widgets make it possible to build beautiful, responsive, and powerful applications with minimal effort. [Rdocumentation](https://www.rdocumentation.org/packages/shiny/versions/1.3.2)
+- `shinydashboard`: Create dashboards with 'Shiny'. This package provides a theme on top of 'Shiny', making it easy to create attractive dashboards. 
+[Rdocumentation](https://www.rdocumentation.org/packages/shinydashboard/versions/0.7.1)
 - `shinyjs`: Perform common useful JavaScript operations in Shiny apps that will greatly improve your apps without having to know any JavaScript. 
+[Rdocumentation](https://www.rdocumentation.org/packages/shinyjs/versions/1.0)
 
 #### Others
-- `assertthat`: An extension to stopifnot() that makes it easy to declare the pre and post conditions that you code should satisfy, while also producing friendly error messages so that your users know what they've done wrong.
-- `broom`: Summarizes key information about statistical objects in tidy tibbles.
+- `assertthat`: An extension to stopifnot() that makes it easy to declare the pre and post conditions that you code should satisfy, while also producing friendly error messages so that your users know what they've done wrong. 
+[Rdocumentation](https://www.rdocumentation.org/packages/assertthat/versions/0.2.1)
+- `broom`: Summarizes key information about statistical objects in tidy tibbles. 
+[Rdocumentation](https://www.rdocumentation.org/packages/broom/versions/0.5.2)
 - `lubridate`: Functions to work with date-times and time-spans: fast and user friendly parsing of date-time data, extraction and updating of components of a date-time (years, months, days, hours, minutes, and seconds), algebraic manipulation on date-time and time-span objects. 
-- `modelr`: Functions for modelling that help you seamlessly integrate modelling into a pipeline of data manipulation and visualisation.
-- `tidyverse`: The 'tidyverse' is a set of packages that work in harmony because they share common data representations and 'API' design.\*   
+[Rdocumentation](https://www.rdocumentation.org/packages/lubridate/versions/1.7.4)
+- `modelr`: Functions for modelling that help you seamlessly integrate modelling into a pipeline of data manipulation and visualisation. 
+[Rdocumentation](https://www.rdocumentation.org/packages/modelr/versions/0.1.4)
+- `tidyverse`: The 'tidyverse' is a set of packages that work in harmony because they share common data representations and 'API' design.\* 
+[Rdocumentation](https://www.rdocumentation.org/packages/tidyverse/versions/1.2.1)    
 
-\* This is the holy grail of packages
+\* This is the holy grail of packages  
 *next update: basic manipulations of packages, :, ::*
 
 ## 2. Importing & Reading Data
@@ -168,7 +196,7 @@ Here are some different regression functions you can use, depending on the type 
 [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl) • 
 [Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
 
-- **zero-inflated negative binomial model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df, dist = "negbin", EM = TRUE)` from the `pscl` package. This is the same function as the ZI Poisson, with a different distance.  
+- **zero-inflated negative binomial model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df, dist = "negbin", EM = TRUE)` from the `pscl` package. This is the same function as the ZI Poisson, with a different distance.   
 [Example](https://stats.idre.ucla.edu/r/dae/zinb/) • 
 [RDocumentation](https://www.rdocumentation.org/packages/pscl/versions/1.5.2/topics/zeroinfl) • 
 [Wikipedia](https://en.wikipedia.org/wiki/Zero-inflated_model)
@@ -298,7 +326,7 @@ summary(results_anova)  # summary table
 *next update: IRT models, IRC, ICC*
 
 ## 4. Visualizing Data
-### 4.1. GGplot
+### 4.1. ggplot
 #### types of graphs
 There are many different types of plots, here are a few:
 - **Beeswarm**: (+) Shows all data points for clear density. (-) Overwhelming for large datasets. Harder to read.
@@ -355,7 +383,7 @@ ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
 #### Facetting
 When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
 
-### 4.2. Not GGplot
+### 4.2. Not ggplot
 #### facetting
 If you're not using ggplot or any other grob, like a simple `plot()` function, the gridExtra and other gridding function probably will not work. So you can use the `par()`function. You simply need to specify the number of rows and columns you wish to have and write the plots below. 
 ```
