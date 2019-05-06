@@ -13,8 +13,8 @@
 ## 0. Blog Updates
 **Next update**: Adding some photos/illustrations of the different graphs + zero-inflated models + fixed & random effects models
 
-**03.05** - tiny update, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. + small addition on the 4th on gridding. 
-**->section 3 updated: descriptions of regressions**
+**03.05** - tiny updates, totally forgot to add special variables in the ggplot section, doing it now to not forget next update ;) I was in the mood to write, so I started the next update with new function information for fixed and random effects. + small addition on the 4th on gridding. + on the 5th small addition mainly formatting.     
+**->section 3, 4, 5 updated: descriptions of regressions**
 
 **29.04** - Instead of doing the planned update, I will share new things from today's class instead and postpone my next update. I didn't expect to have so much new material in class today, so get ready "concepts in statistics: part 2". It's mostly going to be more theoretical, with code, but that's alawys really useful to remember the correct terms and the explanations behind the code.   
 **->section 3 updated: descriptions of regressions**
@@ -115,13 +115,15 @@ Here are some different regression functions you can use, depending on the type 
 
 - **ordered probit model**: `polr(dv ~ iv1 + iv2, data = df, Hess = T, method = "probit")`. Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named. The same can be done with a logit model, by simply changing the method. Here "Hess" is set to `TRUE` as we want the information matrix to get standard errors. The "ordered" part of the model implies that our DV here is not binary anymore (as a probit/logit should be), and could be instead a Likert-scale, grades, etc. [Read more on probit](https://en.wikipedia.org/wiki/Ordered_probit) [or logit](https://en.wikipedia.org/wiki/Ordered_logit)
 
-- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories.  [Read more](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
+- **multinomial logit model**: `mlogit(dv ~ iv1 + iv2, data = df)`. Estimation by maximum likelihood of the multinomial logit model, with alternative-specific and/or individual specific variables. Like all multinomial models, this one also has a DV made up of non-ordered categories. [Read more](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
 
 - **Poisson model**: `glm(dv ~ iv1 + iv2,data = df, family = "poisson")` So, we find another form of glm, this time used for count data (number of deaths, population, events etc.) or contigency tables (frequency/count in table form). It assumes that the DV has a [poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution), and that the counts are independent of each other, meaning one count will not lead directly to another. It also assumes that the variance and mean are equal. [Read more](https://en.wikipedia.org/wiki/Poisson_regression)
 
 - **negative binomial model**: `glm.nb(dv ~ iv1 + iv2, data = df, control=glm.control(maxit=200))` A modification of the system function glm() to include estimation of the additional parameter, theta, for a Negative Binomial generalized linear model. Also used for count data, it is a mixture of the Poisson model, except does not have the variance-mean assumption, with a gamma distribution. However, different distributions are related as can be [read here](https://en.wikipedia.org/wiki/Negative_binomial_distribution#Related_distributions). [Read more on the NB distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution)
 
-- **zero-inflated models**: including both Poisson and NB. [Read more](https://en.wikipedia.org/wiki/Zero-inflated_model)
+- **zero-inflated Poisson model**: `zeroinfl(dv ~ iv1 + iv2 | iv3, data = df)` a function from the `pscl` package. Here is a [great description](https://stats.idre.ucla.edu/r/dae/zip/) of how to perform the model. [Read more](https://en.wikipedia.org/wiki/Zero-inflated_model)
+
+- **zero-inflated negative binomial model**: including both Poisson and NB. [Read more](https://en.wikipedia.org/wiki/Zero-inflated_model)
 
 - **pooling model**: `plm(dv ~ iv1, data = df, index = c("iv2","iv3"), model = "pooling")` [Read more](https://en.wikipedia.org/wiki/Panel_analysis)
 
@@ -204,7 +206,7 @@ Once we have performed our regression, we obviously need to understand the resul
 - **F-statistic**:
 
 #### Marginal effects
-This part is often forgotten during the data and model analysis. This page explains well how to get margianl effects in R: https://cran.r-project.org/web/packages/margins/vignettes/Introduction.htm
+This part is often forgotten during the data and model analysis. [This page](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.htm) explains well how to get margianl effects in R.
 
 #### ANOVA
 The one-way ANOVA is used to compare means of multiple samples. They can be the same (null hypothesis) or different (alternative hypothesis). Assumptions: (1) observations are random, (2) data is normally distributed and (3) the populations have a normal variance (check with Levene's test)
@@ -241,7 +243,7 @@ ggplot(data, aes(x=dv, y=..density.., alpha = 0.4, fill = var1)) +  # choosing f
   geom_density()
 ```
 
-- **Histogram**: (+) Simple and easy to read. (-) Not very interesting. Easily misread when error bars are added. Beware of bin width and start. Check out this great website for optimizing reader understanding of histograms: http://tinlizzie.org/histograms/. 
+- **Histogram**: (+) Simple and easy to read. (-) Not very interesting. Easily misread when error bars are added. Beware of bin width and start. Check out this [great website](http://tinlizzie.org/histograms/) for optimizing reader understanding of histograms. 
 ```
 ggplot(data, aes(x=dv, y=..count..)) +
   geom_histogram(binwidth = 0.2)  # scaling of bars
@@ -309,18 +311,19 @@ You will see here above that some variables have been transformed with a **natur
 Another beautiful way to show data, if possible, is through a **map representation of the data**. The blog post right here is very descriptive and creates a really clean yet colourful map. I have used this one many times, as it is [my "go-to" world map guide](https://brennonborbon.wordpress.com/2017/12/16/creating-simple-world-maps-in-ggplot2/). I do however usually prefer to choose my own colours. Also, check out this website/book for other really good inspirations a guides on making beautiful maps in R: Geocomputation with R in the useful links. 
 
 #### Residuals 
-Here is a nice blog post about visualizing residuals: https://drsimonj.svbtle.com/visualising-residuals. I quite like this one as it puts a real emphasis on the residuals which are the furthest. The post also teaches you about useful manipulations with ggplot. 
+Here is a nice [blog post](https://drsimonj.svbtle.com/visualising-residuals) about visualizing residuals. I quite like this one as it puts a real emphasis on the residuals which are the furthest. The post also teaches you about useful manipulations with ggplot. 
 
 ## 5. Useful Links
-- Chartmaker directory: http://chartmaker.visualisingdata.com/
-- Colours in R: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
-- Designing visualization: https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf
-- Geocomputation with R: https://geocompr.robinlovelace.net/index.html
-- GGplot cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
-- GGplot cheatsheet 2: http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/
-- GGplot guide: http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization
-- Mathematical symbols in R markdown / LaTeX: https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
-- Regular expressions cheatsheet: https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf
-- RStudio shorcuts: https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts
-- Stargazer cheatsheet: https://www.jakeruss.com/cheatsheets/stargazer/ 
-- Tidyverse style guide: https://style.tidyverse.org/index.html
+- [Chartmaker directory](http://chartmaker.visualisingdata.com/): a very extensive table of data visualisation types and where/how to make them. "The Chartmaker Directory is an attempt to gather and organise a useful catalogue of references that will offer an answer to one of the most common questions in data visualisation: 'which tool do you need to make that chart?’."
+- [Colours in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf): a PDF of all the colour names and colours used in R. 
+- [Designing visualization](https://github.com/wxyyxc1992/Awesome-CS-Books-Warehouse/blob/master/Frontend/DataVisualization/2014-Visualization%20Analysis%20%26%20Design.pdf): A free online book on visualization. THis one can get pretty complicated, so don't hesitate to start fron the start. 
+- [Geocomputation with R](https://geocompr.robinlovelace.net/index.html): A free online book on drawing all possible different map styles in R. 
+- [GGplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf): understandable on its own, just a two page cheatsheet of the main functions of ggplot.
+- [GGplot cheatsheet 2](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/): This is a very elaborate cheat*page* with extensive descriptions of ggplot functions. 
+- [GGplot guide](http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization): This is a thorough guide that starts from the most basic manipulations, yet will also show you some pretty neat tricks.
+- [A Handbook of Statistical Analyses Using R](http://www.ecostat.unical.it/tarsitano/Didattica/LabStat2/Everitt.pdf): This is a great guide to help you out with most statistic questions and how to perform them in R. The first chapters are really useful for newer R users or for those that want to brush up on their knowledge. 
+- [Mathematical symbols in R markdown / LaTeX](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols): If you're writing equations of any sort in a markdown file, this page is really help to learn the notations. 
+- [Regular expressions cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf): one-page cheatsheet on regular expressions. 
+- [RStudio shorcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts): if you want to get quite efficient in R, don't hesitate to check out the shortcuts of actions you perform often. A little knowledge goes a long way here, you can save lots of time!
+- [Stargazer cheatsheet](https://www.jakeruss.com/cheatsheets/stargazer/): cheat*page* on all of the possibilities with stargazer. Any question you have has its answer here. 
+- [Tidyverse style guide](https://style.tidyverse.org/index.html): Proper grammar and spelling is important in all languages, including programming languages such as R! It's good to learn the basics to have beautifully written code. 
