@@ -386,7 +386,7 @@ ggplot(data, aes(x = var2, y = var1, color = var2, group = var2)) +
 ```
 
 #### Facetting
-When one would like to compare multiple variables or graphs next to one another, it is possible to use the `grid_facet()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
+When one would like to compare multiple variables or graphs next to one another, it is possible to use the `facet_grid()` function. This allows to avoid layering too many graphs onto one graph and creating too much clutter. With the link below, you'll find how to create the grid you would like to have. [Read more](https://ggplot2.tidyverse.org/reference/facet_grid.html)
 
 ### 4.2. Not ggplot
 #### facetting
