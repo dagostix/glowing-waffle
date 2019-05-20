@@ -1,6 +1,6 @@
 # The R code library
 
-**The library has been moved to the Wiki part of the site. You can visit it by clicking [here](https://github.com/dagostix/glowing-waffle/wiki).
+**The library has been moved to the Wiki part of the site. You can visit it by clicking [here](https://github.com/dagostix/glowing-waffle/wiki).  
 If you can any comments or feedback, please [click here](https://forms.gle/Jf1oCHBc3oqDFcnx8) to send them.**
 
 This is an R code library mixed in with some statistics knowledge, aimed at students doing their own research, but mostly for personal use. I've mixed most contents from my classes + some personal research to get a broader overview of the matters at hand. If you have any comments/feedback, just look at the [history of the index.md file](https://github.com/dagostix/glowing-waffle/commits/master/index.md) and comment on the latest update. I will try to add recommendations that I find useful in the following updates. You can always find the content of the upcoming updates in the blog section. 
